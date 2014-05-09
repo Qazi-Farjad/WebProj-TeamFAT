@@ -1,0 +1,79 @@
+------------------------------------------------------------
+		THIS SCHEMA IS NOT FINAL
+------------------------------------------------------------
+
+Create Database dbCourseIT;
+
+Use dbCourseIT;
+
+
+
+CREATE TABLE UserData (
+  user_index INT NOT NULL AUTO_INCREMENT , 
+  user_id VARCHAR( 40 ) NOT NULL ,
+  name VARCHAR( 60 ) NOT NULL ,
+  email VARCHAR( 80 ) NOT NULL ,
+  uni VARCHAR( 80 ) NOT NULL ,
+  school VARCHAR( 80 ) ,
+  password VARCHAR( 40 ) NOT NULL ,
+  degree VARCHAR( 30 ) NOT NULL ,
+  internship INT ,
+  UNIQUE (user_id),
+  PRIMARY KEY (user_index)
+);
+
+
+
+
+CREATE TABLE Internships (
+	internship_id INT NOT NULL ,
+	submitter VARCHAR(30) NOT NULL,
+	info	VARCHAR(200)  NOT NULL,
+	PRIMARY KEY (internship_id)
+);
+
+
+
+
+
+
+CREATE TABLE Courses
+(
+Course_ID 	int 		NOT NULL AUTO_INCREMENT,
+Course_Name 	varchar(255) 	NOT NULL,
+Instructor 	varchar(255)	NOT NULL,
+Course_UV 	INT		NOT NULL,
+Course_pic  	varchar(255),
+PRIMARY KEY 	(Course_ID)
+);
+
+
+
+-----------------------------------------------------------------------------------------------
+
+Below this are the test tables (I wanted to test schemas, but we can get to this later)
+-----------------------------------------------------------------------------------------------
+
+CREATE TABLE UserAccInfo (
+  user_id VARCHAR( 40 ) NOT NULL ,
+  name VARCHAR( 60 ) NOT NULL ,
+  email VARCHAR( 80 ) NOT NULL ,
+  password VARCHAR( 40 ) NOT NULL ,
+  user_pic VARCHAR( 40 ),
+  PRIMARY KEY (user_id)
+);
+
+-----------------------------------------
+
+CREATE TABLE UserAcademicInfo (
+  user_id VARCHAR( 40 ) NOT NULL ,
+  uni VARCHAR( 80 ) NOT NULL ,
+  school VARCHAR( 80 ) ,
+  degree VARCHAR( 30 ) NOT NULL ,
+  internship INT ,
+  FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
+  PRIMARY KEY (user_id)
+
+);
+
+-----------------------------------------
