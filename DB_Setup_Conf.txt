@@ -25,13 +25,12 @@ CREATE TABLE UserData (
 
 
 
-CREATE TABLE Internships (
-	internship_id INT NOT NULL ,
+CREATE TABLE IF NOT EXISTS Internships (
+	internship_id INT NOT NULL AUTO_INCREMENT,
 	submitter VARCHAR(30) NOT NULL,
 	info	VARCHAR(200)  NOT NULL,
 	PRIMARY KEY (internship_id)
 );
-
 
 
 
