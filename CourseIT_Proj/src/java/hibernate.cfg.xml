@@ -4,8 +4,15 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbcourseit?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/dbcourseit</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">asdasd</property>
+    
+    
+   <!-- List of XML mapping files -->
+   <mapping resource="InternshipsBean.hbm.xml"/>
+   <mapping resource="CoursesBean.hbm.xml"/>
+   <mapping resource="UserBean.hbm.xml"/>
+   
   </session-factory>
 </hibernate-configuration>

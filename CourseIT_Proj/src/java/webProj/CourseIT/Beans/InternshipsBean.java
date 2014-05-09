@@ -15,5 +15,31 @@ public class InternshipsBean {
 	private String submitter;
 	private String info;
         
-        //TODO: Setter/Getter Functions.
+        public InternshipsBean(){}
+        public InternshipsBean(String submitter, String info){
+            //TODO: Implement constructor.
+        }
+        
+        
+        //Setter/Getter Functions.
+        
+        public int getId() {
+            return internship_id;
+        }
+        public void setId( int id ) {
+            this.internship_id = id;
+        }
+        public String getSubmitter() {
+            return submitter;
+        }
+        public void setBkname(String sbmName) {
+            this.submitter = sbmName;
+        }
+        public String getInfo() {
+            return info;
+        }
+        public void setInfo( String info ) {
+            this.info = info;
+        }
+
 }
