@@ -26,12 +26,12 @@ public class DB_CommInternship {
     public Integer addInternshipListing(String submitter, String info){
       Session session = factory.openSession();
       Transaction tx = null;
-      Integer bkID = null;
+      Integer internshipID = null;
       try{
          tx = session.beginTransaction();
-         //Constructor not yet Implemented. Mapping Ni hui abhi Tak.
+         
          InternshipsBean ib = new InternshipsBean(submitter, info);
-         bkID = (Integer) session.save(ib); 
+         internshipID = (Integer) session.save(ib); 
          tx.commit();
       }catch (HibernateException e) {
          if (tx!=null) tx.rollback();
@@ -39,8 +39,8 @@ public class DB_CommInternship {
       }finally {
          session.close(); 
       }
-      return bkID;
-   }
+      return internshipID;
+    }
     
     public void deleteInternshipListing(Integer internshipID){
       Session session = factory.openSession();
