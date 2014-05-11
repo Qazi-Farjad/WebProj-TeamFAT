@@ -1,5 +1,7 @@
 ------------------------------------------------------------
 		THIS SCHEMA IS NOT FINAL
+
+    UPDATE: Ver2 is now up and being used.
 ------------------------------------------------------------
 
 Create Database dbCourseIT;
@@ -7,22 +9,26 @@ Create Database dbCourseIT;
 Use dbCourseIT;
 
 
-
-CREATE TABLE UserData (
-  user_index INT NOT NULL AUTO_INCREMENT , 
+CREATE TABLE UserAccInfo (
   user_id VARCHAR( 40 ) NOT NULL ,
   name VARCHAR( 60 ) NOT NULL ,
   email VARCHAR( 80 ) NOT NULL ,
-  uni VARCHAR( 80 ) NOT NULL ,
-  school VARCHAR( 80 ) ,
   password VARCHAR( 40 ) NOT NULL ,
-  degree VARCHAR( 30 ) NOT NULL ,
+  user_pic VARCHAR( 40 ),
   internship INT ,
-  UNIQUE (user_id),
-  PRIMARY KEY (user_index)
+  PRIMARY KEY (user_id)
 );
 
 
+CREATE TABLE UserAcademicInfo (
+  user_id VARCHAR( 40 ) NOT NULL ,
+  uni VARCHAR( 80 ) NOT NULL ,
+  school VARCHAR( 80 ) ,
+  degree VARCHAR( 30 ) NOT NULL ,
+  FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
+  PRIMARY KEY (user_id)
+
+);
 
 
 CREATE TABLE IF NOT EXISTS Internships (
@@ -31,8 +37,6 @@ CREATE TABLE IF NOT EXISTS Internships (
 	info	VARCHAR(200)  NOT NULL,
 	PRIMARY KEY (internship_id)
 );
-
-
 
 
 
@@ -51,28 +55,30 @@ PRIMARY KEY 	(Course_ID)
 -----------------------------------------------------------------------------------------------
 
 Below this are the test tables (I wanted to test schemas, but we can get to this later)
+
+UPDATE: (Table UserAccInfo and UserAcademicInfo) These are now being used to store UserData.
+        Table UserData is now deprecated.
 -----------------------------------------------------------------------------------------------
 
-CREATE TABLE UserAccInfo (
+
+
+
+-----------------------------------------------------------------------------------------------
+                DEPRECATED:
+-----------------------------------------------------------------------------------------------
+
+
+
+CREATE TABLE UserData (
+  user_index INT NOT NULL AUTO_INCREMENT , 
   user_id VARCHAR( 40 ) NOT NULL ,
   name VARCHAR( 60 ) NOT NULL ,
   email VARCHAR( 80 ) NOT NULL ,
-  password VARCHAR( 40 ) NOT NULL ,
-  user_pic VARCHAR( 40 ),
-  PRIMARY KEY (user_id)
-);
-
------------------------------------------
-
-CREATE TABLE UserAcademicInfo (
-  user_id VARCHAR( 40 ) NOT NULL ,
   uni VARCHAR( 80 ) NOT NULL ,
   school VARCHAR( 80 ) ,
+  password VARCHAR( 40 ) NOT NULL ,
   degree VARCHAR( 30 ) NOT NULL ,
   internship INT ,
-  FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
-  PRIMARY KEY (user_id)
-
+  UNIQUE (user_id),
+  PRIMARY KEY (user_index)
 );
-
------------------------------------------
