@@ -6,7 +6,10 @@
 <hibernate-mapping>
    <class name="webProj.CourseIT.Beans.InternshipsBean" table="Internships">
       <meta attribute="class-description">
-         This class contains the Internships details. 
+         This class contains the Internships details.
+          Internship_ID
+          Submitters Name/Company-Name
+          Info about the Internship 
       </meta>
       <id name="internship_id" type="int" column="id">
          <generator class="native"/>

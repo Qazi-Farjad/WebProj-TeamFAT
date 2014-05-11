@@ -12,13 +12,15 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session; 
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
+
+//----------------------------- Local Import
 import webProj.CourseIT.Beans.InternshipsBean;
 
 /**
  *
  * @author Farjad
  */
-public class dbCommInternship {
+public class DB_CommInternship {
     private static SessionFactory factory;
     
     public Integer addInternshipListing(String submitter, String info){
@@ -40,12 +42,12 @@ public class dbCommInternship {
       return bkID;
    }
     
-    public void deleteInternshipListing(Integer bkID){
+    public void deleteInternshipListing(Integer internshipID){
       Session session = factory.openSession();
       Transaction tx = null;
       try{
          tx = session.beginTransaction();
-         InternshipsBean ib = (InternshipsBean)session.get(InternshipsBean.class, bkID); 
+         InternshipsBean ib = (InternshipsBean)session.get(InternshipsBean.class, internshipID); 
          session.delete(ib); 
          tx.commit();
       }catch (HibernateException e) {

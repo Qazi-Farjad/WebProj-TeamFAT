@@ -12,7 +12,8 @@
    <!-- List of XML mapping files -->
    <mapping resource="InternshipsBean.hbm.xml"/>
    <mapping resource="CoursesBean.hbm.xml"/>
-   <mapping resource="UserBean.hbm.xml"/>
+   <mapping resource="UserAccBean.hbm.xml"/>
+   <mapping resource="UserAcadBean.hbm.xml"/>
    
   </session-factory>
 </hibernate-configuration>

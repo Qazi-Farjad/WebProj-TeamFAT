@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="webProj.CourseIT.Beans.CoursesBean" table="Courses">
+      <meta attribute="class-description">
+         This class contains the Courses details.
+          Course Info
+          Course Name
+          Instructor 
+          Upvotes
+          Pic Location
+      </meta>
+      <id name="Course_ID" type="int" column="Course_ID">
+         <generator class="native"/>
+      </id>
+      <property name="Course_Name" column="Course_Name" type="string"/>
+      <property name="Instructor" column="Instructor" type="string"/>
+      <property name="pic" column="Course_pic" type="string"/>
+      <property name="UV" column="Course_UV" type="int"/>
+   </class>
+</hibernate-mapping>

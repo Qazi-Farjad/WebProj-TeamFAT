@@ -10,6 +10,6 @@ package webProj.CourseIT;
  *
  * @author Farjad
  */
-public class dbCommUser {
+public class DB_CommCourse {
     
 }

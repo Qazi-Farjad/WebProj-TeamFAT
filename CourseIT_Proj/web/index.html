@@ -10,6 +10,8 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.min.css" media="screen">
+        <link href="Dependencies\signin.css" rel="stylesheet">
+        
     </head>
     <body>
 
@@ -41,7 +43,21 @@ and open the template in the editor.
           </ul>
         </nav>
       </div>
-    </header> 
+    </header>
+        
+    <div class="container">
+
+      <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Sign in</h2>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /Sign in container -->   
         
     <script type='text/javascript' src="Dependencies\jquery-2.1.1.js"></script>
     <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script>    
