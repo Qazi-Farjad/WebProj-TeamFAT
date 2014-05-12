@@ -93,6 +93,9 @@ FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
 PRIMARY KEY (Rid)
 );
 
+
+Alter TABLE useraccinfo modify COLUMN user_id INT auto_increment;
+
 -----------------------------------------------------------------------------------------------
 
 Below this are the test tables (I wanted to test schemas, but we can get to this later)
