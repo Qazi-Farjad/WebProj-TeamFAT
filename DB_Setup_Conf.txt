@@ -10,7 +10,7 @@ Use dbCourseIT;
 
 
 CREATE TABLE UserAccInfo (
-  user_id int NOT NULL ,
+  user_id int NOT NULL AUTO_INCREMENT,
   name VARCHAR( 60 ) NOT NULL ,
   email VARCHAR( 80 ) NOT NULL ,
   password VARCHAR( 40 ) NOT NULL ,
@@ -92,6 +92,8 @@ FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
 FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
 PRIMARY KEY (Rid)
 );
+
+
 
 -----------------------------------------------------------------------------------------------
 
