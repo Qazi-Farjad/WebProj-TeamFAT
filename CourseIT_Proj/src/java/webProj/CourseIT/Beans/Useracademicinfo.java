@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package webProj.CourseIT.Beans.AutoGen;
+package webProj.CourseIT.Beans;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Farjad
+ * @author Talal Saleem
  */
 @Entity
 @Table(name = "useracademicinfo")
@@ -36,7 +36,7 @@ public class Useracademicinfo implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "user_id")
-    private String userId;
+    private Integer userId;
     @Basic(optional = false)
     @Column(name = "uni")
     private String uni;
@@ -52,21 +52,21 @@ public class Useracademicinfo implements Serializable {
     public Useracademicinfo() {
     }
 
-    public Useracademicinfo(String userId) {
+    public Useracademicinfo(Integer userId) {
         this.userId = userId;
     }
 
-    public Useracademicinfo(String userId, String uni, String degree) {
+    public Useracademicinfo(Integer userId, String uni, String degree) {
         this.userId = userId;
         this.uni = uni;
         this.degree = degree;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -124,7 +124,7 @@ public class Useracademicinfo implements Serializable {
 
     @Override
     public String toString() {
-        return "webProj.CourseIT.Beans.AutoGen.Useracademicinfo[ userId=" + userId + " ]";
+        return "webProj.CourseIT.Beans.Useracademicinfo[ userId=" + userId + " ]";
     }
     
 }

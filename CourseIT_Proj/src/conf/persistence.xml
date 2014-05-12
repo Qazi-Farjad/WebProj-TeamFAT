@@ -6,6 +6,13 @@
     <class>webProj.CourseIT.Beans.AutoGen.Courses</class>
     <class>webProj.CourseIT.Beans.AutoGen.Useraccinfo</class>
     <class>webProj.CourseIT.Beans.AutoGen.Useracademicinfo</class>
+    <class>webProj.CourseIT.Beans.Courses</class>
+    <class>webProj.CourseIT.Beans.Review</class>
+    <class>webProj.CourseIT.Beans.Useracademicinfo</class>
+    <class>webProj.CourseIT.Beans.Coursehistory</class>
+    <class>webProj.CourseIT.Beans.Internships</class>
+    <class>webProj.CourseIT.Beans.Useraccinfo</class>
+    <class>webProj.CourseIT.Beans.Courseenroll</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbcourseit?zeroDateTimeBehavior=convertToNull"/>

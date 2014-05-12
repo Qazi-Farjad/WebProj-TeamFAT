@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package webProj.CourseIT.Beans.AutoGen;
+package webProj.CourseIT.Beans;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,13 +15,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Farjad
+ * @author Talal Saleem
  */
 @Entity
 @Table(name = "useraccinfo")
@@ -31,14 +34,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Useraccinfo.findByName", query = "SELECT u FROM Useraccinfo u WHERE u.name = :name"),
     @NamedQuery(name = "Useraccinfo.findByEmail", query = "SELECT u FROM Useraccinfo u WHERE u.email = :email"),
     @NamedQuery(name = "Useraccinfo.findByPassword", query = "SELECT u FROM Useraccinfo u WHERE u.password = :password"),
-    @NamedQuery(name = "Useraccinfo.findByUserPic", query = "SELECT u FROM Useraccinfo u WHERE u.userPic = :userPic"),
-    @NamedQuery(name = "Useraccinfo.findByInternship", query = "SELECT u FROM Useraccinfo u WHERE u.internship = :internship")})
+    @NamedQuery(name = "Useraccinfo.findByUserPic", query = "SELECT u FROM Useraccinfo u WHERE u.userPic = :userPic")})
 public class Useraccinfo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "user_id")
-    private String userId;
+    private Integer userId;
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
@@ -50,30 +52,34 @@ public class Useraccinfo implements Serializable {
     private String password;
     @Column(name = "user_pic")
     private String userPic;
-    @Column(name = "Internship")
-    private Integer internship;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Courseenroll> courseenrollCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "useraccinfo")
     private Useracademicinfo useracademicinfo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Review> reviewCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Coursehistory> coursehistoryCollection;
 
     public Useraccinfo() {
     }
 
-    public Useraccinfo(String userId) {
+    public Useraccinfo(Integer userId) {
         this.userId = userId;
     }
 
-    public Useraccinfo(String userId, String name, String email, String password) {
+    public Useraccinfo(Integer userId, String name, String email, String password) {
         this.userId = userId;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -109,12 +115,13 @@ public class Useraccinfo implements Serializable {
         this.userPic = userPic;
     }
 
-    public Integer getInternship() {
-        return internship;
+    @XmlTransient
+    public Collection<Courseenroll> getCourseenrollCollection() {
+        return courseenrollCollection;
     }
 
-    public void setInternship(Integer internship) {
-        this.internship = internship;
+    public void setCourseenrollCollection(Collection<Courseenroll> courseenrollCollection) {
+        this.courseenrollCollection = courseenrollCollection;
     }
 
     public Useracademicinfo getUseracademicinfo() {
@@ -123,6 +130,24 @@ public class Useraccinfo implements Serializable {
 
     public void setUseracademicinfo(Useracademicinfo useracademicinfo) {
         this.useracademicinfo = useracademicinfo;
+    }
+
+    @XmlTransient
+    public Collection<Review> getReviewCollection() {
+        return reviewCollection;
+    }
+
+    public void setReviewCollection(Collection<Review> reviewCollection) {
+        this.reviewCollection = reviewCollection;
+    }
+
+    @XmlTransient
+    public Collection<Coursehistory> getCoursehistoryCollection() {
+        return coursehistoryCollection;
+    }
+
+    public void setCoursehistoryCollection(Collection<Coursehistory> coursehistoryCollection) {
+        this.coursehistoryCollection = coursehistoryCollection;
     }
 
     @Override
@@ -147,7 +172,7 @@ public class Useraccinfo implements Serializable {
 
     @Override
     public String toString() {
-        return "webProj.CourseIT.Beans.AutoGen.Useraccinfo[ userId=" + userId + " ]";
+        return "webProj.CourseIT.Beans.Useraccinfo[ userId=" + userId + " ]";
     }
     
 }

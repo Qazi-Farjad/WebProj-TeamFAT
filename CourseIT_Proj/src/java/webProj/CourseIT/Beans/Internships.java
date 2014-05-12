@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package webProj.CourseIT.Beans.AutoGen;
+package webProj.CourseIT.Beans;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +17,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Farjad
+ * @author Talal Saleem
  */
 @Entity
 @Table(name = "internships")
@@ -29,7 +32,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Internships.findAll", query = "SELECT i FROM Internships i"),
     @NamedQuery(name = "Internships.findByInternshipId", query = "SELECT i FROM Internships i WHERE i.internshipId = :internshipId"),
     @NamedQuery(name = "Internships.findBySubmitter", query = "SELECT i FROM Internships i WHERE i.submitter = :submitter"),
-    @NamedQuery(name = "Internships.findByInfo", query = "SELECT i FROM Internships i WHERE i.info = :info")})
+    @NamedQuery(name = "Internships.findByInfo", query = "SELECT i FROM Internships i WHERE i.info = :info"),
+    @NamedQuery(name = "Internships.findByEmail", query = "SELECT i FROM Internships i WHERE i.email = :email"),
+    @NamedQuery(name = "Internships.findByRelatedField", query = "SELECT i FROM Internships i WHERE i.relatedField = :relatedField"),
+    @NamedQuery(name = "Internships.findByDuration", query = "SELECT i FROM Internships i WHERE i.duration = :duration"),
+    @NamedQuery(name = "Internships.findByStartingDate", query = "SELECT i FROM Internships i WHERE i.startingDate = :startingDate")})
 public class Internships implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -43,6 +50,20 @@ public class Internships implements Serializable {
     @Basic(optional = false)
     @Column(name = "info")
     private String info;
+    @Basic(optional = false)
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    @Column(name = "RelatedField")
+    private String relatedField;
+    @Basic(optional = false)
+    @Column(name = "Duration")
+    @Temporal(TemporalType.DATE)
+    private Date duration;
+    @Basic(optional = false)
+    @Column(name = "StartingDate")
+    @Temporal(TemporalType.DATE)
+    private Date startingDate;
 
     public Internships() {
     }
@@ -51,10 +72,14 @@ public class Internships implements Serializable {
         this.internshipId = internshipId;
     }
 
-    public Internships(Integer internshipId, String submitter, String info) {
+    public Internships(Integer internshipId, String submitter, String info, String email, String relatedField, Date duration, Date startingDate) {
         this.internshipId = internshipId;
         this.submitter = submitter;
         this.info = info;
+        this.email = email;
+        this.relatedField = relatedField;
+        this.duration = duration;
+        this.startingDate = startingDate;
     }
 
     public Integer getInternshipId() {
@@ -81,6 +106,38 @@ public class Internships implements Serializable {
         this.info = info;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRelatedField() {
+        return relatedField;
+    }
+
+    public void setRelatedField(String relatedField) {
+        this.relatedField = relatedField;
+    }
+
+    public Date getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Date duration) {
+        this.duration = duration;
+    }
+
+    public Date getStartingDate() {
+        return startingDate;
+    }
+
+    public void setStartingDate(Date startingDate) {
+        this.startingDate = startingDate;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -103,7 +160,7 @@ public class Internships implements Serializable {
 
     @Override
     public String toString() {
-        return "webProj.CourseIT.Beans.AutoGen.Internships[ internshipId=" + internshipId + " ]";
+        return "webProj.CourseIT.Beans.Internships[ internshipId=" + internshipId + " ]";
     }
     
 }
