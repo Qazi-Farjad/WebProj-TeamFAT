@@ -10,7 +10,7 @@ Use dbCourseIT;
 
 
 CREATE TABLE UserAccInfo (
-  user_id int NOT NULL ,
+  user_id int NOT NULL AUTO_INCREMENT,
   name VARCHAR( 60 ) NOT NULL ,
   email VARCHAR( 80 ) NOT NULL ,
   password VARCHAR( 40 ) NOT NULL ,
@@ -94,7 +94,6 @@ PRIMARY KEY (Rid)
 );
 
 
-Alter TABLE useraccinfo modify COLUMN user_id INT auto_increment;
 
 -----------------------------------------------------------------------------------------------
 
