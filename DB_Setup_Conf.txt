@@ -10,18 +10,17 @@ Use dbCourseIT;
 
 
 CREATE TABLE UserAccInfo (
-  user_id VARCHAR( 40 ) NOT NULL ,
+  user_id int NOT NULL ,
   name VARCHAR( 60 ) NOT NULL ,
   email VARCHAR( 80 ) NOT NULL ,
   password VARCHAR( 40 ) NOT NULL ,
   user_pic VARCHAR( 40 ),
-  internship INT ,
   PRIMARY KEY (user_id)
 );
 
 
 CREATE TABLE UserAcademicInfo (
-  user_id VARCHAR( 40 ) NOT NULL ,
+  user_id int NOT NULL ,
   uni VARCHAR( 80 ) NOT NULL ,
   school VARCHAR( 80 ) ,
   degree VARCHAR( 30 ) NOT NULL ,
@@ -35,6 +34,10 @@ CREATE TABLE IF NOT EXISTS Internships (
 	internship_id INT NOT NULL AUTO_INCREMENT,
 	submitter VARCHAR(30) NOT NULL,
 	info	VARCHAR(200)  NOT NULL,
+	email varchar(200) Not Null,
+	RelatedField varchar(255) NOT NULL,
+	Duration  date NOT NULL,
+	StartingDate date NOT NULL,
 	PRIMARY KEY (internship_id)
 );
 
@@ -42,15 +45,53 @@ CREATE TABLE IF NOT EXISTS Internships (
 
 CREATE TABLE Courses
 (
-Course_ID 	int 		NOT NULL AUTO_INCREMENT,
-Course_Name 	varchar(255) 	NOT NULL,
+Course_ID 	int NOT NULL AUTO_INCREMENT,
+Course_Name varchar(255) 	NOT NULL,
 Instructor 	varchar(255)	NOT NULL,
 Course_UV 	INT		NOT NULL,
-Course_pic  	varchar(255),
-PRIMARY KEY 	(Course_ID)
+Course_pic  varchar(255),
+SourceCompany varchar(255),
+SourceLink varchar(255),
+ExpiryDate date,
+StartingDate date, 
+PRIMARY KEY (Course_ID)
 );
 
 
+CREATE TABLE CourseEnroll
+(
+CEid int Not NULL AUTO_INCREMENT,
+Course_ID 	int NOT NULL ,
+user_id int NOT NULL ,
+FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
+FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
+PRIMARY KEY (CEid)
+);
+
+
+
+CREATE TABLE CourseHistory
+(
+CHid int Not NULL AUTO_INCREMENT, 
+user_id int NOT NULL ,
+Course_ID 	int NOT NULL ,
+GradePercentage int NOT NULL,
+FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
+FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
+PRIMARY KEY (CHid)
+);
+
+CREATE TABLE Review
+(
+Rid int Not NULL AUTO_INCREMENT, 
+user_id int NOT NULL ,
+Course_ID 	int NOT NULL ,
+Reviews varchar(255) NOT NULL,
+Review_UV int NOT NULL,
+FOREIGN KEY (user_id) REFERENCES UserAccInfo(user_id),
+FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID),
+PRIMARY KEY (Rid)
+);
 
 -----------------------------------------------------------------------------------------------
 
