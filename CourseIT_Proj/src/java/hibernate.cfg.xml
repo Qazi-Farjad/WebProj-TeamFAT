@@ -8,5 +8,12 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">Mtsaleem</property>
     <!-- List of XML mapping files -->
+    <mapping class="webProj.CourseIT.Beans.Useraccinfo"/>
+     <mapping class="webProj.CourseIT.Beans.Useracademicinfo"/>
+      <mapping class="webProj.CourseIT.Beans.Review"/>
+       <mapping class="webProj.CourseIT.Beans.Internships"/>
+        <mapping class="webProj.CourseIT.Beans.Courses"/>
+         <mapping class="webProj.CourseIT.Beans.Coursehistory"/>
+          <mapping class="webProj.CourseIT.Beans.Courseenroll"/>
   </session-factory>
 </hibernate-configuration>

@@ -16,8 +16,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import webProj.CourseIT.Beans.Useraccinfo;
+import static webProj.CourseIT.util.HibernateUtil.getSessionA;
+
 /**
  *
  * @author Talal Saleem
@@ -25,26 +28,31 @@ import webProj.CourseIT.Beans.Useraccinfo;
 public class DB_UserAccInfo {
        private static SessionFactory factory;
        
+       public static void main(String []args){
+       DB_UserAccInfo d =  new DB_UserAccInfo();
+       d.CheckUser("t@h.com", "a1");
+       }
        
           /* Method to CREATE an employee in the database */
    public Integer CheckUser(String email, String password){
-      Session session = factory.openSession();
-      Transaction tx = null;
-      Integer userID = null;
-      try{
-         tx = session.beginTransaction();
-      Useraccinfo u =  new Useraccinfo();
-      Query query = session.getNamedQuery("Useraccinfo.findByEmail");
-              query.setParameter("email", email);
-              int id = query
-         tx.commit();
-      }catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
-         e.printStackTrace(); 
-      }finally {
-         session.close(); 
-      }
-      return userID;
+       int id =0;
+      Session session=getSessionA();
+      session.beginTransaction();
+      Query query = session.getNamedQuery("Useraccinfo.findByPassword");
+              query.setParameter("password", password);
+            List<Useraccinfo> results = query.list(); 
+            System.out.println("hello");
+              System.out.println(results.get(0));
+              for(Useraccinfo result : results)  
+                {  
+                     System.out.println(result.getName());  
+                }  
+        
+      
+        session.getTransaction().commit();  
+        session.close(); 
+      
+      return id;
    }
     
 }
