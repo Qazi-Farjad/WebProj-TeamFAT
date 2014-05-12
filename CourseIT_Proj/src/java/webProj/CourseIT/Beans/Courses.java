@@ -85,11 +85,10 @@ public class Courses implements Serializable {
         this.courseID = courseID;
     }
 
-    public Courses(Integer courseID, String courseName, String instructor, int courseUV) {
-        this.courseID = courseID;
+    public Courses(String courseName, String instructor, int courseUV) {
         this.courseName = courseName;
         this.instructor = instructor;
-        this.courseUV = courseUV;
+        this.courseUV = 0;
     }
 
     public Integer getCourseID() {

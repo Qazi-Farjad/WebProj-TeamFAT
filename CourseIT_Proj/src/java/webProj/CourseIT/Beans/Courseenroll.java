@@ -47,8 +47,8 @@ public class Courseenroll implements Serializable {
     public Courseenroll() {
     }
 
-    public Courseenroll(Integer cEid) {
-        this.cEid = cEid;
+    public Courseenroll(int ceID) {
+
     }
 
     public Integer getCEid() {
