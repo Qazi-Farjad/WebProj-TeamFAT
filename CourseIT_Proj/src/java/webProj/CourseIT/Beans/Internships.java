@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Talal Saleem
+ * @author Farjad
  */
 @Entity
 @Table(name = "internships")
@@ -72,8 +72,8 @@ public class Internships implements Serializable {
         this.internshipId = internshipId;
     }
 
-    public Internships(Integer internshipId, String submitter, String info, String email, String relatedField, Date duration, Date startingDate) {
-        this.internshipId = internshipId;
+    public Internships(String submitter, String info, String email, String relatedField, Date duration, Date startingDate) {
+    
         this.submitter = submitter;
         this.info = info;
         this.email = email;
