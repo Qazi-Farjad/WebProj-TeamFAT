@@ -24,7 +24,7 @@ public class HibernateUtil {
 	            throw new ExceptionInInitializerError(ex);
 	        }
 	    }
-	    public static Session getSessionA()
+	    public static Session getSession()
 	            throws HibernateException {
 	        return concreteSessionFactory.openSession();
 	    }

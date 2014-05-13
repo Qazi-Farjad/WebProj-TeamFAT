@@ -19,7 +19,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import webProj.CourseIT.Beans.Useraccinfo;
-import static webProj.CourseIT.util.HibernateUtil.getSessionA;
+import static webProj.CourseIT.util.HibernateUtil.getSession;
 
 /**
  *
@@ -30,29 +30,50 @@ public class DB_UserAccInfo {
        
        public static void main(String []args){
        DB_UserAccInfo d =  new DB_UserAccInfo();
-       d.CheckUser("t@h.com", "a1");
+       d.CheckUser("a@h.com", "b1");
+       
        }
        
-          /* Method to CREATE an employee in the database */
+          /* Method to verify User Email and Password*/
    public Integer CheckUser(String email, String password){
        int id =0;
-      Session session=getSessionA();
+      Session session=getSession();
       session.beginTransaction();
-      Query query = session.getNamedQuery("Useraccinfo.findByPassword");
+      Query query = session.getNamedQuery("Useraccinfo.findByPasswordAndEmail");
               query.setParameter("password", password);
+              query.setParameter("email", email);
             List<Useraccinfo> results = query.list(); 
+            
             System.out.println("hello");
-              System.out.println(results.get(0));
+              System.out.println(query);
               for(Useraccinfo result : results)  
                 {  
                      System.out.println(result.getName());  
+                     System.out.println(result.getEmail()); 
+                     return result.getUserId();
                 }  
         
       
         session.getTransaction().commit();  
         session.close(); 
       
-      return id;
+      return null;
+   }
+   
+    //Add a New User to the database
+   public void AddUser (String name, String email,String password){
+       Session session=getSession();
+        session.beginTransaction();
+        
+        Useraccinfo user = new Useraccinfo(name,email,password);
+        session.save(user);
+        
+        
+        
+        
+         session.getTransaction().commit();  
+        session.close(); 
+       
    }
     
 }
