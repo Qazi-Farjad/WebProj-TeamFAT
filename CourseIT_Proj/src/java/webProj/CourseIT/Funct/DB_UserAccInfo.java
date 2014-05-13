@@ -17,6 +17,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import webProj.CourseIT.Beans.Useracademicinfo;
 import webProj.CourseIT.Beans.Useraccinfo;
 import static webProj.CourseIT.util.HibernateUtil.getSession;
 
@@ -30,7 +31,7 @@ public class DB_UserAccInfo {
        public static void main(String []args){
        DB_UserAccInfo d =  new DB_UserAccInfo();
        d.CheckUser("a@h.com", "b1");
-       
+       d.AddNewUser("hello", "b2h.com", "c1");
        }
        
           /* Method to verify User Email and Password*/
@@ -66,7 +67,15 @@ public class DB_UserAccInfo {
         session.beginTransaction();
         
         Useraccinfo user = new Useraccinfo(name,email,password);
-        session.save(user);
+        Useracademicinfo user_details =  new Useracademicinfo();
+         // Save Account
+        session.saveOrUpdate(user);
+         // Save Employee
+        user_details.setUseraccinfo(user);
+        session.saveOrUpdate(user_details);
+        
+        session.saveOrUpdate(user_details);
+        
         
         
         
