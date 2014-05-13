@@ -18,6 +18,7 @@ public class DB_Review {
     public void AddReview(int userid, int courseid, String review){
         //Bean class main nayay review kay UV automatically 0 set ho jatay hain, dont need to do it here
         
+        
     }
     
     public void IncrementUV(){

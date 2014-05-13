@@ -90,6 +90,18 @@ public class Courses implements Serializable {
         this.instructor = instructor;
         this.courseUV = 0;
     }
+    
+    
+    public Courses(String cname, String instructor, String sourceComp,
+                         String sourceLink, Date expiryDate, Date startingDate){
+    this.courseName = cname;
+    this.instructor = instructor;
+    this.sourceCompany =sourceComp;
+    this.sourceLink = sourceLink;
+    this.expiryDate = expiryDate;
+    this.startingDate = startingDate;
+    
+    }
 
     public Integer getCourseID() {
         return courseID;

@@ -25,12 +25,9 @@ public class DB_UserAcademicinfo {
         session.beginTransaction();
         
         Useracademicinfo user = new Useracademicinfo(userid,uni,school,degree);      
-
-        
         Query query = session.getNamedQuery("Useraccinfo.findByUserId");
         query.setParameter("userId", userid);
         List<Useraccinfo> result = query.list();
-        
         if(!result.isEmpty()){
               for(Useraccinfo resul : result)  
                 {  
@@ -38,9 +35,6 @@ public class DB_UserAcademicinfo {
                 }  
                }
         session.saveOrUpdate(user);
-        
-        
-        
         session.getTransaction().commit();  
         session.close();
         
@@ -48,7 +42,7 @@ public class DB_UserAcademicinfo {
     }
     
     
-    //--------------------------------
+    //--------------------------------//
     public static void main(String []args){
        DB_UserAcademicinfo d =  new DB_UserAcademicinfo();
        
