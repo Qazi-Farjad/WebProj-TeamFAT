@@ -35,6 +35,10 @@ public class DB_UserAccInfo {
        }
        
           /* Method to verify User Email and Password*/
+          
+          //-------------------------------------------
+          //Please make this Method return user_id from the db, Mujhay servlet main yeh chahiye hoga
+          //--------------------------------------------
    public Integer CheckUser(String email, String password){
        int id =0;
       Session session=getSession();
@@ -61,7 +65,7 @@ public class DB_UserAccInfo {
    }
    
     //Add a New User to the database
-   public void AddUser (String name, String email,String password){
+   public void AddNewUser (String name, String email,String password){
        Session session=getSession();
         session.beginTransaction();
         
@@ -77,3 +81,39 @@ public class DB_UserAccInfo {
    }
     
 }
+
+//We need functionality to add user pictures, magar upload wala scene dekhna paray ga.
+//Abhi to this function takes only String picPosition
+
+//Most probably servlet say pic store karwain gay aur phir is funct ko call karkay picture ki filesystem main path
+//database main dalain gay.
+
+//Is path ko database main add karnay ki functionality daal do
+        public void AddUserPic (int userid, String picPath){
+               
+        }
+        
+        
+//Funct: GetUserData
+//Need this function to get the users data for profile and other stuff.
+
+       public Useraccinfo getUserData(int userid){
+              Useraccinfo u = null;
+              
+              
+              return u;
+       }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
