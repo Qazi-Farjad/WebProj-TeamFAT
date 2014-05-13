@@ -56,8 +56,9 @@ public class Useracademicinfo implements Serializable {
         this.userId = userId;
     }
 
-    public Useracademicinfo(Integer userId, String uni, String degree) {
+    public Useracademicinfo(Integer userId, String uni, String school, String degree) {
         this.userId = userId;
+        this.school = school;
         this.uni = uni;
         this.degree = degree;
     }
