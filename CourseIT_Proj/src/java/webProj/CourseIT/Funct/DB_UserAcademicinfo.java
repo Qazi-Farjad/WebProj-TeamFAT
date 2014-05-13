@@ -12,4 +12,13 @@ package webProj.CourseIT.Funct;
  */
 public class DB_UserAcademicinfo {
     
+    //Single function, ez pz
+    public void AddAcadInfo(String uni, String school, String degree){
+        
+        
+    }
+    
+    
+    
+    
 }

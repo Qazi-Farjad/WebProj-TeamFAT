@@ -16,7 +16,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import webProj.CourseIT.Beans.Useraccinfo;
 import static webProj.CourseIT.util.HibernateUtil.getSession;
@@ -80,7 +79,7 @@ public class DB_UserAccInfo {
        
    }
     
-}
+
 
 //We need functionality to add user pictures, magar upload wala scene dekhna paray ga.
 //Abhi to this function takes only String picPosition
@@ -89,31 +88,19 @@ public class DB_UserAccInfo {
 //database main dalain gay.
 
 //Is path ko database main add karnay ki functionality daal do
-        public void AddUserPic (int userid, String picPath){
+    public void AddUserPic(int userid, String picPath){
                
-        }
+    }
         
         
 //Funct: GetUserData
 //Need this function to get the users data for profile and other stuff.
 
-       public Useraccinfo getUserData(int userid){
-              Useraccinfo u = null;
+    public Useraccinfo getUserData(int userid){
+        Useraccinfo u = null;
               
               
-              return u;
+        return u;
        }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+}
