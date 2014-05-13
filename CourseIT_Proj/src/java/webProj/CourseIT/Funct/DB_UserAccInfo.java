@@ -38,8 +38,7 @@ public class DB_UserAccInfo {
           //-------------------------------------------
           //Please make this Method return user_id from the db, Mujhay servlet main yeh chahiye hoga
           //--------------------------------------------
-   public Integer CheckUser(String email, String password){
-       int id =0;
+     public Integer CheckUser(String email, String password){
       Session session=getSession();
       session.beginTransaction();
       Query query = session.getNamedQuery("Useraccinfo.findByPasswordAndEmail");
@@ -47,19 +46,17 @@ public class DB_UserAccInfo {
               query.setParameter("email", email);
             List<Useraccinfo> results = query.list(); 
             
-            System.out.println("hello");
-              System.out.println(query);
+               if(!results.isEmpty()){
               for(Useraccinfo result : results)  
                 {  
-                     System.out.println(result.getName());  
-                     System.out.println(result.getEmail()); 
+                     session.getTransaction().commit();  
+                      session.close();
                      return result.getUserId();
                 }  
-        
-      
-        session.getTransaction().commit();  
-        session.close(); 
-      
+               }
+       session.getTransaction().commit();  
+        session.close();
+      //return null when no result is found
       return null;
    }
    
@@ -88,19 +85,47 @@ public class DB_UserAccInfo {
 //database main dalain gay.
 
 //Is path ko database main add karnay ki functionality daal do
-    public void AddUserPic(int userid, String picPath){
-               
-    }
+     public void AddUserPic (int userid, String picPath){
+        Session session=getSession();
+        session.beginTransaction();
+             
+             Query query = session.getNamedQuery("Useraccinfo.UpdateUserPic");
+              query.setParameter("picPath", picPath);
+              query.setParameter("userid", userid);
+              query.executeUpdate();
+                
+        session.getTransaction().commit();  
+        session.close(); 
+        }
         
         
 //Funct: GetUserData
 //Need this function to get the users data for profile and other stuff.
 
-    public Useraccinfo getUserData(int userid){
-        Useraccinfo u = null;
-              
-              
-        return u;
+   public Useraccinfo getUserData(int userid){
+             
+              Session session=getSession();
+              session.beginTransaction();
+             
+              Query query = session.getNamedQuery("Useraccinfo.findByUserId");
+              query.setParameter("userId", userid);
+               List<Useraccinfo> results = query.list(); 
+               if(!results.isEmpty()){
+                    for(Useraccinfo result : results)  
+                    {  
+                         System.out.println(result.getName());  
+                         System.out.println(result.getEmail());
+                         Useraccinfo u = new Useraccinfo(result.getName(),result.getEmail(),result.getPassword());
+                         session.getTransaction().commit();  
+                         session.close();
+                         return u;
+                    }  
+
+               }
+               session.getTransaction().commit();  
+              session.close();
+               //return null when no result is found
+              return null;
        }
-        
 }
+        
