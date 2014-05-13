@@ -26,7 +26,6 @@ import static webProj.CourseIT.util.HibernateUtil.getSession;
  * @author Talal Saleem
  */
 public class DB_UserAccInfo {
-       private static SessionFactory factory;
        
        public static void main(String []args){
        DB_UserAccInfo d =  new DB_UserAccInfo();

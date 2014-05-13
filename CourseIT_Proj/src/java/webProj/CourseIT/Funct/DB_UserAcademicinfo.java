@@ -6,6 +6,13 @@
 
 package webProj.CourseIT.Funct;
 
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import webProj.CourseIT.Beans.Useracademicinfo;
+import webProj.CourseIT.Beans.Useraccinfo;
+import static webProj.CourseIT.util.HibernateUtil.getSession;
+
 /**
  *
  * @author Talal Saleem
@@ -13,11 +20,40 @@ package webProj.CourseIT.Funct;
 public class DB_UserAcademicinfo {
     
     //Single function, ez pz
-    public void AddAcadInfo(String uni, String school, String degree){
+    public void AddAcadInfo(int userid, String uni, String school, String degree){
+        Session session=getSession();
+        session.beginTransaction();
+        
+        Useracademicinfo user = new Useracademicinfo(userid,uni,school,degree);      
+
+        
+        Query query = session.getNamedQuery("Useraccinfo.findByUserId");
+        query.setParameter("userId", userid);
+        List<Useraccinfo> result = query.list();
+        
+        if(!result.isEmpty()){
+              for(Useraccinfo resul : result)  
+                {  
+                    user.setUseraccinfo(resul);
+                }  
+               }
+        session.saveOrUpdate(user);
+        
+        
+        
+        session.getTransaction().commit();  
+        session.close();
         
         
     }
     
+    
+    //--------------------------------
+    public static void main(String []args){
+       DB_UserAcademicinfo d =  new DB_UserAcademicinfo();
+       
+       d.AddAcadInfo(4, "talalwtf", "b2wtfcomxx", "c1wtfxx");
+    }
     
     
     
