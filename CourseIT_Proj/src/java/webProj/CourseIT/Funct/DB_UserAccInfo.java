@@ -31,7 +31,7 @@ public class DB_UserAccInfo {
        public static void main(String []args){
        DB_UserAccInfo d =  new DB_UserAccInfo();
        d.CheckUser("a@h.com", "b1");
-       d.AddNewUser("hello", "b2h.com", "c1");
+       d.AddNewUser("talalwtf", "b2wtfcomxx", "c1wtfxx");
        }
        
           /* Method to verify User Email and Password*/
@@ -66,21 +66,10 @@ public class DB_UserAccInfo {
        Session session=getSession();
         session.beginTransaction();
         
-        Useraccinfo user = new Useraccinfo(name,email,password);
-        Useracademicinfo user_details =  new Useracademicinfo();
-         // Save Account
+        Useraccinfo user = new Useraccinfo(name,email,password);      
         session.saveOrUpdate(user);
-         // Save Employee
-        user_details.setUseraccinfo(user);
-        session.saveOrUpdate(user_details);
-        
-        session.saveOrUpdate(user_details);
-        
-        
-        
-        
-        
-         session.getTransaction().commit();  
+          
+        session.getTransaction().commit();  
         session.close(); 
        
    }
