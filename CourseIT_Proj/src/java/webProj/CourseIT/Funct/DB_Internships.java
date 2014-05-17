@@ -49,7 +49,7 @@ public class DB_Internships {
         Session session=getSession();
         session.beginTransaction();
         
-         Query query = session.getNamedQuery("Useraccinfo.findByRelatedField");
+         Query query = session.getNamedQuery("Internships.findByRelatedField");
            query.setParameter("relatedField", relatedField);
             ints =  query.list();
             if(!ints.isEmpty()){
@@ -71,7 +71,7 @@ public class DB_Internships {
         Session session=getSession();
         session.beginTransaction();
         
-         Query query = session.getNamedQuery("Useraccinfo.findBySubmitter");
+         Query query = session.getNamedQuery("Internships.findBySubmitter");
            query.setParameter("submitter", submitter);
             ints =  query.list();
             if(!ints.isEmpty()){
