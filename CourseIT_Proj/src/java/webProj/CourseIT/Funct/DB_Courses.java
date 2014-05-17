@@ -20,6 +20,13 @@ import static webProj.CourseIT.util.HibernateUtil.getSession;
  */
 public class DB_Courses {
 
+    
+      public static void main(String []args){
+       DB_Courses d =  new DB_Courses();
+       Date date = new Date();
+       d.addCourse("Web", "Qaisar", "Chutiya Co.", "Q@l.com",date, date);
+      System.out.println( d.getDuration("Web"));
+    }
 
     public void addCourse(String cname, String instructor, String sourceComp,
                          String sourceLink, Date expiryDate, Date startingDate){
@@ -42,7 +49,7 @@ public class DB_Courses {
         Courses c = null;
         Session session=getSession();
         session.beginTransaction();
-        Query query = session.getNamedQuery("Useraccinfo.findByCourseName");
+        Query query = session.getNamedQuery("Courses.findByCourseName");
         query.setParameter("courseName", cname);
         List<Courses> results = query.list(); 
                if(!results.isEmpty()){
@@ -66,7 +73,7 @@ public class DB_Courses {
         Date d = null;
         Session session=getSession();
         session.beginTransaction();
-        Query query = session.getNamedQuery("Useraccinfo.findByCourseName");
+        Query query = session.getNamedQuery("Courses.findByCourseName");
         query.setParameter("courseName", cname);
        List<Courses> results = query.list(); 
                if(!results.isEmpty()){
@@ -96,7 +103,7 @@ public class DB_Courses {
         Session session=getSession();
         session.beginTransaction();
         
-         Query query = session.getNamedQuery("Useraccinfo.findByInstructor");
+         Query query = session.getNamedQuery("Courses.findByInstructor");
            query.setParameter("instructor", instructor);
             ints =  query.list();
             if(!ints.isEmpty()){
@@ -119,7 +126,7 @@ public class DB_Courses {
         Session session=getSession();
         session.beginTransaction();
         
-         Query query = session.getNamedQuery("Useraccinfo.findBySourceCompany");
+         Query query = session.getNamedQuery("Courses.findBySourceCompany");
            query.setParameter("sourceCompany", sourceComp);
             ints =  query.list();
             if(!ints.isEmpty()){

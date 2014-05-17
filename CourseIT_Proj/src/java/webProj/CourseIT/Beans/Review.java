@@ -59,10 +59,9 @@ public class Review implements Serializable {
         this.rid = rid;
     }
 
-    public Review(Integer rid, String reviews, int reviewUV) {
-        this.rid = rid;
+    public Review(String reviews) {
         this.reviews = reviews;
-        this.reviewUV = reviewUV;
+        this.reviewUV = 0;
     }
 
     public Integer getRid() {

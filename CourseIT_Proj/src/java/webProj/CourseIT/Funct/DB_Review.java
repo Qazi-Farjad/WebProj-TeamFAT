@@ -7,7 +7,12 @@
 package webProj.CourseIT.Funct;
 
 import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import webProj.CourseIT.Beans.Courses;
 import webProj.CourseIT.Beans.Review;
+import webProj.CourseIT.Beans.Useraccinfo;
+import static webProj.CourseIT.util.HibernateUtil.getSession;
 
 /**
  *
@@ -15,8 +20,42 @@ import webProj.CourseIT.Beans.Review;
  */
 public class DB_Review {
     
-    public void AddReview(int userid, int courseid, String review){
+      public static void main(String []args){
+       DB_Review d =  new DB_Review();
+       
+       d.AddReview(1, 1, "Hello World");
+    }
+    
+    public void AddReview(Integer userid , Integer courseid, String review){
         //Bean class main nayay review kay UV automatically 0 set ho jatay hain, dont need to do it here
+        Session session=getSession();
+        session.beginTransaction();
+        
+        Review r = new Review(review);
+        Query query = session.getNamedQuery("Useraccinfo.findByUserId");
+        query.setParameter("userId", userid);
+        List<Useraccinfo> result = query.list();
+        if(!result.isEmpty()){
+              for(Useraccinfo resul : result)  
+                {  
+                  r.setUserId(resul);
+                }  
+               }
+        Query query1 = session.getNamedQuery("Courses.findByCourseID");
+        query1.setParameter("courseID", courseid);
+        List<Courses> result1 = query1.list();
+        if(!result.isEmpty()){
+              for(Courses resul : result1)  
+                {  
+                  r.setCourseID(resul);
+                }  
+               }
+        
+        
+        session.saveOrUpdate(r);
+        session.getTransaction().commit();  
+        session.close();
+        
         
         
     }
