@@ -97,19 +97,20 @@ public class DB_Review {
         List<Review> revs = null;
         Session session=getSession();
         session.beginTransaction();
+        
         Courses c = new Courses();
         c.setCourseID(courseid);
-         Query query = session.getNamedQuery("Review.findByCourseid");
-           query.setParameter("courseid", c);
-            revs =  query.list();
+         
+        Query query = session.getNamedQuery("Review.findByCourseid");
+        query.setParameter("courseid", c);
+            
+        revs =  query.list();
             if(!revs.isEmpty()){
             session.getTransaction().commit();  
             session.close(); 
             return revs;
             }
 
-        
-        
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
