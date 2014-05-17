@@ -66,7 +66,7 @@ public class DB_CourseEnroll {
     //------------------------------
     
     public List<Courseenroll> getEnrollmentbyUser(int userid){
-            List<Courseenroll> ce = null;
+          List<Courseenroll> ce = null;
         Session session=getSession();
         session.beginTransaction();
         

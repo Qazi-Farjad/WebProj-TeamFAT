@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Coursehistory.findAll", query = "SELECT c FROM Coursehistory c"),
+    @NamedQuery(name = "Coursehistory.findByUserid", query = "SELECT c FROM Coursehistory c where c.userId = :userid"),
     @NamedQuery(name = "Coursehistory.findByCHid", query = "SELECT c FROM Coursehistory c WHERE c.cHid = :cHid"),
     @NamedQuery(name = "Coursehistory.findByGradePercentage", query = "SELECT c FROM Coursehistory c WHERE c.gradePercentage = :gradePercentage")})
 public class Coursehistory implements Serializable {
