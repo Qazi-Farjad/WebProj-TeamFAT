@@ -10,6 +10,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Review.findAll", query = "SELECT r FROM Review r"),
     @NamedQuery(name = "Review.findByRid", query = "SELECT r FROM Review r WHERE r.rid = :rid"),
+      @NamedQuery(name = "Review.findByCourseid", query = "SELECT r FROM Review r WHERE r.courseID = :courseid ORDER BY Review_UV DESC"),
     @NamedQuery(name = "Review.findByReviews", query = "SELECT r FROM Review r WHERE r.reviews = :reviews"),
     @NamedQuery(name = "Review.findByReviewUV", query = "SELECT r FROM Review r WHERE r.reviewUV = :reviewUV")})
 public class Review implements Serializable {
@@ -49,7 +51,7 @@ public class Review implements Serializable {
     @ManyToOne(optional = false)
     private Useraccinfo userId;
     @JoinColumn(name = "Course_ID", referencedColumnName = "Course_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Courses courseID;
 
     public Review() {

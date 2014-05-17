@@ -23,7 +23,7 @@ public class DB_Review {
       public static void main(String []args){
        DB_Review d =  new DB_Review();
        
-       d.AddReview(1, 1, "Hello World");
+       d.getReviews(1);
     }
     
     public void AddReview(Integer userid , Integer courseid, String review){
@@ -60,19 +60,60 @@ public class DB_Review {
         
     }
     
-    public void IncrementUV(){
+    //rid has to come in. how we would be referencing to the particular review
+    public void IncrementUV(Integer rid){
         //no return types, nothing comes in.
         //POSSIBLE PROBLEM: We are not tracking which user has upvoted which review.
         //Yani aik banda beth kar million upvotes mar sakta hai... 
+        Session session=getSession();
+              session.beginTransaction();
+             
+              Query query = session.getNamedQuery("Review.findByRid");
+              query.setParameter("rid", rid);
+               List<Review> results = query.list(); 
+               if(!results.isEmpty()){
+                    for(Review result : results)  
+                    {  
+                        int  increment = result.getReviewUV();
+                        increment++;
+                        result.setReviewUV(increment);
+                         session.getTransaction().commit();  
+                         session.close();
+                     return;
+                    }  
+
+               }
+               session.getTransaction().commit();  
+              session.close();
+               //return null when no result is found
+            return;
     }
     
     
     //Get all reviews for a given course. Agar number of UV kay hisab say sort kar do List main hi, to 
     //aagay thori asaani hogi.
+    //Prbolem: reflection wala error
     public List<Review> getReviews(int courseid){
         List<Review> revs = null;
+        Session session=getSession();
+        session.beginTransaction();
+        Courses c = new Courses();
+        c.setCourseID(courseid);
+         Query query = session.getNamedQuery("Review.findByCourseid");
+           query.setParameter("courseid", c);
+            revs =  query.list();
+            if(!revs.isEmpty()){
+            session.getTransaction().commit();  
+            session.close(); 
+            return revs;
+            }
+
         
-        return revs;
+        
+        session.getTransaction().commit();  
+         session.close(); 
+          //return null when no result is found
+        return null;
     }
     
 }
