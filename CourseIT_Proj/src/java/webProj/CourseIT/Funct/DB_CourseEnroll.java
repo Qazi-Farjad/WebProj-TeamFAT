@@ -67,10 +67,8 @@ public class DB_CourseEnroll {
     
     //------------------------------
     
-    public List<Courses> getEnrollmentbyUser(int userid){
-          List<Courseenroll> ce = null;
-          
-            List<Courses> UserCourse = null;
+       public List<Courses> getEnrollmentbyUser(int userid){
+            List<Courses> UserCourse = new  Vector<Courses>();
         Session session=getSession();
         session.beginTransaction();
         
@@ -79,17 +77,22 @@ public class DB_CourseEnroll {
          
         Query query = session.getNamedQuery("Courseenroll.findByUserid");
         query.setParameter("userid", u);
-        
+        System.out.println("Hello");
          List<Courseenroll> results = query.list(); 
-            if(!ce.isEmpty()){
-                  for(Courseenroll result : results)  {
-                      List<Courses> Course = null;
+            if(!results.isEmpty()){
+                  for(Courseenroll result : results)  {  
                      query = session.getNamedQuery("Courses.findByCourseID");
-                     query.setParameter("courseID",  result.getCourseID());
-                    Course = query.list();
-                    
+                     
+                     int j = (Integer)result.getCourseID();
+                     query.setParameter("courseID", 1 );
+                     System.out.println(result.getCourseID());
+                    List<Courses> Course = query.list();
+                    System.out.println("Hello1");
                        if(!Course.isEmpty()){
-                           UserCourse.add(Course.get(0));   
+                           System.out.println();
+                         Courses c = Course.get(0);
+                         System.out.println(c.getCourseName());
+                        UserCourse.add(c);
                        }
                        else
                        {
