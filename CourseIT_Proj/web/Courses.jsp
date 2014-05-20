@@ -75,10 +75,10 @@
         Courses: <br>
 
         <%
-        int id = 0;
+
         for(Courses course: CourseList){
-            out.print("<a href = \"CourseLandingServlet?cid=" +course.getCourseID() + "\">" + course.getCourseName() + "       ");
-            out.print("By: " + course.getInstructor() + "<br>");
+            out.print("<a href = \"CourseLandingServlet" + "\">" + course.getCourseName());
+            out.print(" By: " + course.getInstructor() + "<br>");
         }
 
         %>

@@ -13,6 +13,7 @@
         <link href="Dependencies\bootstrap\css\bootstrap.min.css" rel="stylesheet">
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo, java.util.List"%>
         <%@ page import="webProj.CourseIT.Beans.Courses,webProj.CourseIT.Funct.DB_Courses"%>
+        <%@ page import="webProj.CourseIT.Beans.Review,webProj.CourseIT.Funct.DB_Review"%>
         <%
         String user = null;
         if(session.getAttribute("user") == null){
@@ -23,13 +24,16 @@
         String name = uai.getName();
         int userID = uai.getUserId();
         DB_Courses db = new DB_Courses();
+        
+        int iter = 0;
 
         Courses c = (Courses)session.getAttribute("ViewCourse");
-        
+        DB_Review rev = new DB_Review();
+        List<Review> reviews = rev.getReviews(1);
         %>        
         
         
-        <title><% //=c.getCourseName() %></title>
+        <title><%=c.getCourseName() %></title>
     </head>
     <body>
     
@@ -89,8 +93,8 @@
 
       		</div>  
       		<div class="col-md-9">
-              	<h2 id="sec0"><% //=c.getCourseName() %></h2>
-                <% //=c.getInstructor() %><br/>
+              	<h2 id="sec0"><%=c.getCourseName() %></h2>
+                <%=c.getInstructor() %><br/>
               	
             
            
@@ -104,28 +108,29 @@
               
               	<h2 id="sec1">Instructor info:</h2>
               	
-                <h5 id="in1">Instructor:</h5>
-              	<h5 id="in2">Instructor:</h5>
+                <h5 id="in1">Instructor: <%=c.getInstructor() %></h5>
 
 
               	<div class="row">
                   <div class="col-md-6">
                     <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #1</h3></div>
-                      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                      Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                      dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                      Aliquam in felis sit amet augue.
+                      <div class="panel-body">
+                          <%=reviews.get(iter).getReviews()%>
+                          <br>
+                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <% iter++; %>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
                       <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #2</h3></div>
-                      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                      Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                      dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                      Aliquam in felis sit amet augue.
+                      <div class="panel-body">
+                          <%=reviews.get(iter).getReviews()%>
+                          <br>
+                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <% iter++; %>
                       </div>
                     </div>
                   </div>  
@@ -135,20 +140,22 @@
                   <div class="col-md-6">
                     <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #3</h3></div>
-                      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                      Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                      dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                      Aliquam in felis sit amet augue.
+                      <div class="panel-body">
+                          <%=reviews.get(iter).getReviews()%>
+                          <br>
+                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <% iter++; %>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
                       <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #4</h3></div>
-                      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-                      Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-                      dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-                      Aliquam in felis sit amet augue.
+                      <div class="panel-body">
+                          <%=reviews.get(iter).getReviews()%>
+                          <br>
+                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <% iter++; %>
                       </div>
                     </div>
                   </div>  
