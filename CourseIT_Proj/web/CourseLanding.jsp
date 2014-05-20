@@ -29,7 +29,7 @@
         %>        
         
         
-        <title><%=c.getCourseName() %></title>
+        <title><% //=c.getCourseName() %></title>
     </head>
     <body>
     
@@ -89,8 +89,8 @@
 
       		</div>  
       		<div class="col-md-9">
-              	<h2 id="sec0"><%=c.getCourseName() %></h2>
-                <%=c.getInstructor() %><br/>
+              	<h2 id="sec0"><% //=c.getCourseName() %></h2>
+                <% //=c.getInstructor() %><br/>
               	
             
            

@@ -68,7 +68,7 @@ public class DB_CourseEnroll {
     //------------------------------
     
        public List<Courses> getEnrollmentbyUser(int userid){
-            List<Courses> UserCourse = new  Vector<Courses>();
+            List<Courses> UserCourse = null;
         Session session=getSession();
         session.beginTransaction();
         
@@ -83,8 +83,9 @@ public class DB_CourseEnroll {
                   for(Courseenroll result : results)  {  
                      query = session.getNamedQuery("Courses.findByCourseID");
                      
-                     int j = (Integer)result.getCourseID();
-                     query.setParameter("courseID", 1 );
+                     Courses j = result.getCourseID();
+                     int x = j.getCourseID();
+                     query.setParameter("courseID", x );
                      System.out.println(result.getCourseID());
                     List<Courses> Course = query.list();
                     System.out.println("Hello1");
