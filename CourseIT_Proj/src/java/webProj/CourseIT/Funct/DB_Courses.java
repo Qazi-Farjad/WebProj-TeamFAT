@@ -24,8 +24,10 @@ public class DB_Courses {
       public static void main(String []args){
        DB_Courses d =  new DB_Courses();
        Date date = new Date();
-       d.addCourse("Web", "Qaisar", "Chutiya Co.", "Q@l.com",date, date);
-      System.out.println( d.getDuration("Web"));
+       //d.addCourse("Web", "Qaisar", "Chutiya Co.", "Q@l.com",date, date);
+       Courses c = d.getCourse(1);
+          System.out.println(c.getCourseName());
+        //System.out.println( d.getDuration("Web"));
     }
 
     public void addCourse(String cname, String instructor, String sourceComp,
@@ -68,6 +70,32 @@ public class DB_Courses {
                //return null when no result is found
               return null;
     }
+    
+    //getCourse by courseID (Overloaded Funct)
+    public Courses getCourse(int cid){
+        Courses c = null;
+        Session session=getSession();
+        session.beginTransaction();
+        Query query = session.getNamedQuery("Courses.findByCourseID");
+        query.setParameter("courseID", cid);
+        List<Courses> results = query.list(); 
+               if(!results.isEmpty()){
+                    for(Courses result : results)  
+                    {  
+                         Courses u = new Courses(result.getCourseName(),result.getInstructor(),result.getSourceCompany()
+                                 ,result.getSourceLink(),result.getExpiryDate(),result.getStartingDate());
+                         session.getTransaction().commit();  
+                         session.close();
+                         return u;
+                    }  
+
+               }
+               session.getTransaction().commit();  
+              session.close();
+               //return null when no result is found
+              return null;
+    }
+    
     
     public int getDuration(String cname){
         Date d = null;

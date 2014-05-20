@@ -9,8 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses,"%>
+        <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses"%>
         <%@ page import="webProj.CourseIT.Funct.DB_CourseEnroll"%>
+        <%@ page import="java.util.List"%>        
         <%
         String user = null;
         if(session.getAttribute("user") == null){
@@ -30,7 +31,9 @@
         <link href="Dependencies\signin.css" rel="stylesheet">
     </head>
     <body>
-
+        
+        <!-- _____Navbar ____-->
+        
     <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -56,19 +59,33 @@
             <li>
               <a href="#">Groups</a>
             </li>
+                        
+            <li>
+              <a href="ProfileLanding.jsp"><%= name%></a>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
+        <!-- _____Navbar ____-->        
     
     <h1> Welcome to CourseIT <%= name%> </h1>
     
     <br><br>
-    Your Courses:
+    Your Courses: <br>
+    
+
     <%
-        DB_CourseEnroll ce = new DB_CourseEnroll();
-        ce.getEnrollmentbyUser(userID);
+        //DB_CourseEnroll ce = new DB_CourseEnroll();
+        //List<Courses> courses = ce.getEnrollmentbyUser(userID);
+        
+        //for(Courses c: courses)
+        //    out.print(c.getCourseName() + "<br>");
+        
+        
     %>
+
+    Notifications:
     
         
     
