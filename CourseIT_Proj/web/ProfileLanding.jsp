@@ -9,9 +9,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo"%>
         <%
         String user = null;
@@ -26,6 +23,13 @@
         Cookie[] cookies = request.getCookies();
 
         %>
+        <title>Profile: <%= name %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.min.css" media="screen">
+        <link href="Dependencies\signin.css" rel="stylesheet">
+    </head>
+    <body>
+
     <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -62,5 +66,8 @@
     
     
     <!-- ______________________________ -->
+            
+    <script type='text/javascript' src="Dependencies\jquery-2.1.1.js"></script>
+    <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script> 
     </body>
 </html>
