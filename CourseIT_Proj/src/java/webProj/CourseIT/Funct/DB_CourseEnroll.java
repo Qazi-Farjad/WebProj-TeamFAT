@@ -25,7 +25,7 @@ public class DB_CourseEnroll {
     public static void main(String []args){
        DB_CourseEnroll d =  new DB_CourseEnroll();
        
-      d.getEnrollmentbyUser(1);
+      
     }
     
     public void setEnrollment(int userid, int courseid){
@@ -66,7 +66,9 @@ public class DB_CourseEnroll {
     //------------------------------
     
     public List<Courses> getEnrollmentbyUser(int userid){
-          List<Courses> ce = null;
+          List<Courseenroll> ce = null;
+          
+            List<Courses> UserCourse = null;
         Session session=getSession();
         session.beginTransaction();
         
@@ -75,12 +77,30 @@ public class DB_CourseEnroll {
          
         Query query = session.getNamedQuery("Courseenroll.findByUserid");
         query.setParameter("userid", u);
-            
-        ce =  query.list();
+        
+         List<Courseenroll> results = query.list(); 
             if(!ce.isEmpty()){
-            session.getTransaction().commit();  
-            session.close(); 
-            return ce;
+                  for(Courseenroll result : results)  {
+                      List<Courses> Course = null;
+                     query = session.getNamedQuery("Courses.findByCourseID");
+                     query.setParameter("courseID",  result.getCourseID());
+                    Course = query.list();
+                    
+                       if(!Course.isEmpty()){
+                           UserCourse.add(Course.get(0));   
+                       }
+                       else
+                       {
+                           session.getTransaction().commit();  
+                         session.close();
+                           return UserCourse;
+                       }
+                  }
+                  
+                  session.getTransaction().commit();  
+                    session.close();
+                   return null;
+                
             }
 
         session.getTransaction().commit();  
