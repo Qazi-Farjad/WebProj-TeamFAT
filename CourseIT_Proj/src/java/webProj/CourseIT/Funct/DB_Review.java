@@ -114,7 +114,7 @@ public class DB_Review {
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return revs;
     }
     
 }

@@ -7,6 +7,7 @@
 package webProj.CourseIT.Funct;
 
 import java.util.List;
+import java.util.Vector;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import webProj.CourseIT.Beans.Courseenroll;
@@ -68,7 +69,7 @@ public class DB_CourseEnroll {
     //------------------------------
     
        public List<Courses> getEnrollmentbyUser(int userid){
-            List<Courses> UserCourse = null;
+         List<Courses> UserCourse = new  Vector<Courses>();
         Session session=getSession();
         session.beginTransaction();
         
@@ -77,42 +78,34 @@ public class DB_CourseEnroll {
          
         Query query = session.getNamedQuery("Courseenroll.findByUserid");
         query.setParameter("userid", u);
-        System.out.println("Hello");
          List<Courseenroll> results = query.list(); 
             if(!results.isEmpty()){
                   for(Courseenroll result : results)  {  
-                     query = session.getNamedQuery("Courses.findByCourseID");
                      
-                     Courses j = result.getCourseID();
-                     int x = j.getCourseID();
+                    Courses j = result.getCourseID();
+                    int x = j.getCourseID();
+                     query = session.getNamedQuery("Courses.findByCourseID");
                      query.setParameter("courseID", x );
-                     System.out.println(result.getCourseID());
                     List<Courses> Course = query.list();
-                    System.out.println("Hello1");
+                    
                        if(!Course.isEmpty()){
-                           System.out.println();
                          Courses c = Course.get(0);
-                         System.out.println(c.getCourseName());
                         UserCourse.add(c);
+                  
                        }
                        else
                        {
                            session.getTransaction().commit();  
-                         session.close();
+                           session.close();
                            return UserCourse;
                        }
-                  }
-                  
-                  session.getTransaction().commit();  
-                    session.close();
-                   return null;
-                
+                  }      
             }
 
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return UserCourse;
     }
     
     public List<Courseenroll> getEnrollmentbyCourse(int courseid){
@@ -136,7 +129,7 @@ public class DB_CourseEnroll {
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return ce;
         
        
     }

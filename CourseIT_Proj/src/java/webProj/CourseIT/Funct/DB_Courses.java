@@ -144,7 +144,7 @@ public class DB_Courses {
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return ints;
     }
     
     public List<Courses> getAllCourses(){
@@ -164,7 +164,7 @@ public class DB_Courses {
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return ints;
     }
     
     
@@ -187,7 +187,7 @@ public class DB_Courses {
         session.getTransaction().commit();  
          session.close(); 
           //return null when no result is found
-        return null;
+        return ints;
     }
     
     
