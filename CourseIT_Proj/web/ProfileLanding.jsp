@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@ page import="webProj.CourseIT.Beans.Useraccinfo"%>
+        <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses,"%>
+        <%@ page import="webProj.CourseIT.Funct.DB_CourseEnroll"%>
         <%
         String user = null;
         if(session.getAttribute("user") == null){
@@ -44,7 +45,7 @@
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
             <li>
-              <a href="#">Courses</a>
+              <a href="Courses.jsp">Courses</a>
             </li>
             <li>
               <a href="#">Explore</a>
@@ -61,6 +62,13 @@
     </header>
     
     <h1> Welcome to CourseIT <%= name%> </h1>
+    
+    <br><br>
+    Your Courses:
+    <%
+        DB_CourseEnroll ce = new DB_CourseEnroll();
+        ce.getEnrollmentbyUser(userID);
+    %>
     
         
     

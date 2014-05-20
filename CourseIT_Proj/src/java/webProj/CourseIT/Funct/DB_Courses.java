@@ -119,6 +119,26 @@ public class DB_Courses {
         return null;
     }
     
+    public List<Courses> getAllCourses(){
+       List<Courses> ints = null;
+        Session session=getSession();
+        session.beginTransaction();
+        
+         Query query = session.getNamedQuery("Courses.findAll");
+            ints =  query.list();
+            if(!ints.isEmpty()){
+            session.getTransaction().commit();  
+            session.close(); 
+            return ints;
+            }
+        
+        
+        session.getTransaction().commit();  
+         session.close(); 
+          //return null when no result is found
+        return null;
+    }
+    
     
 
     public List<Courses> getCoursesBySourceComp(String sourceComp){
