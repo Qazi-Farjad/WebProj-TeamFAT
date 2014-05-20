@@ -29,8 +29,9 @@ public class DB_UserAccInfo {
        
        public static void main(String []args){
        DB_UserAccInfo d =  new DB_UserAccInfo();
-       d.CheckUser("a@h.com", "b1");
-       d.AddNewUser("talalwtf", "b2wtfcomxx", "c1wtfxx");
+       Useraccinfo x = d.CheckUser("a@b.c", "pswd");
+           System.out.println(x);
+       //d.AddNewUser("talalwtf", "b2wtfcomxx", "c1wtfxx");
        }
        
           /* Method to verify User Email and Password*/
@@ -38,7 +39,7 @@ public class DB_UserAccInfo {
           //-------------------------------------------
           //Please make this Method return user_id from the db, Mujhay servlet main yeh chahiye hoga
           //--------------------------------------------
-     public Integer CheckUser(String email, String password){
+     public Useraccinfo CheckUser(String email, String password){
       Session session=getSession();
       session.beginTransaction();
       Query query = session.getNamedQuery("Useraccinfo.findByPasswordAndEmail");
@@ -51,7 +52,7 @@ public class DB_UserAccInfo {
                 {  
                      session.getTransaction().commit();  
                       session.close();
-                     return result.getUserId();
+                     return result;
                 }  
                }
        session.getTransaction().commit();  
