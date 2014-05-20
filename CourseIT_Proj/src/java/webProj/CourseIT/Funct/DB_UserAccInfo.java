@@ -35,10 +35,7 @@ public class DB_UserAccInfo {
        }
        
           /* Method to verify User Email and Password*/
-          
-          //-------------------------------------------
-          //Please make this Method return user_id from the db, Mujhay servlet main yeh chahiye hoga
-          //--------------------------------------------
+
      public Useraccinfo CheckUser(String email, String password){
       Session session=getSession();
       session.beginTransaction();

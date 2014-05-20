@@ -37,11 +37,13 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String email = (String)request.getAttribute("em");
-        String password = (String)request.getAttribute("pass");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+    
         
         DB_UserAccInfo user = new DB_UserAccInfo();
-        Useraccinfo uai = user.CheckUser(email, password);
+        Useraccinfo uai = new Useraccinfo();
+        uai = user.CheckUser(email, password);
         System.out.println(uai + "xxxx");
         
         
