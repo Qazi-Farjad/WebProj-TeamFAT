@@ -75,17 +75,17 @@
             <div class="col-md-6 col-md-offset-3">
                 <form role="form" action="EditProfileServlet">
                   <div class="form-group">
-                    <label for="University">University</label>
-                    <input class="form-control" type = "text" id="University" placeholder="Enter University Name">
+                    <label for="university">University</label>
+                    <input class="form-control" type = "text" name="university" placeholder="Enter University Name">
                   </div>
                   <div class="form-group">
-                    <label for="School">School</label>
-                    <input class="form-control" type = "text" id="School" placeholder="Enter School Name">
+                    <label for="school">School</label>
+                    <input class="form-control" type = "text" name="school" placeholder="Enter School Name">
                   </div>
                     
                   <div class="form-group">
-                    <label for="Degree">Degree</label>
-                    <input class="form-control" type = "text" id="Degree" placeholder="Choose your degree">
+                    <label for="degree">Degree</label>
+                    <input class="form-control" type = "text" name="degree" placeholder="Choose your degree">
                   </div>
                 
                     <label for="profiePic">File input (Image)</label>

@@ -37,9 +37,9 @@ public class EditProfileServlet extends HttpServlet {
         
         //int cid = (int)request.getAttribute("courseid");
         DB_UserAcademicinfo uai = new DB_UserAcademicinfo();
-        String uni = request.getParameter("University");
-        String school = request.getParameter("School");
-        String degree = request.getParameter("Degree");
+        String uni = request.getParameter("university");
+        String school = request.getParameter("school");
+        String degree = request.getParameter("degree");
         
 
         

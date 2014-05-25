@@ -34,9 +34,10 @@ public class CourseLandingServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int cid = (int)request.getAttribute("ids");
+        String cid = request.getParameter("id");
+        int ccid = Integer.parseInt(cid);
         DB_Courses course = new DB_Courses();
-        Courses c = course.getCourse(cid);
+        Courses c = course.getCourse(ccid);
         
         
         try{

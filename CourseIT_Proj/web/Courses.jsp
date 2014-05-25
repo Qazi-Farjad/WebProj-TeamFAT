@@ -62,17 +62,10 @@
         }
         div.coursesCont {
             position: relative;
-            width: 200px;
-            height: 200px;
+
             background: #eee;
             color: #000;
             padding: 20px;    
-        }
-
-        div.coursesCont:hover {
-            cursor: hand;
-            cursor: pointer;
-            opacity: .5;
         }
         </style>
         
@@ -131,8 +124,14 @@
                        
             <%
             out.print("<center>" +course.getCourseName() + "</center>");
-            out.print("<center> By: " + course.getInstructor() + "</center>");
+            out.print("<center> By: " + course.getInstructor() + "</center><br><br>");
             %>
+            
+            <form action="CourseLandingServlet">
+              <input type="hidden" name="id" value="<%=course.getCourseID()%>">
+              <input type="submit" value="Go to Course">
+            </form>
+            
             </div>
             <%
         }
