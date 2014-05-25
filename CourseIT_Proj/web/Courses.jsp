@@ -29,6 +29,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.min.css" media="screen">
         <link href="Dependencies\signin.css" rel="stylesheet">
+        
+        <style>
+        .containerCont{
+          float:left;
+          position:relative;
+        }
+        .coursesCont{
+          float:left;
+          height: 250px; /* or whatever you want */
+          position:relative;
+          width: 550px; /* or whatever you want */
+          border:10px solid red;
+        }
+          
+        a.divLink{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            text-decoration: none;
+            /* Makes sure the link doesn't get underlined */
+            z-index: 10;
+            /* raises anchor tag above everything else in div */
+            background-color: white;
+            /*workaround to make clickable in IE */
+            opacity: 0;
+            /*workaround to make clickable in IE */
+            filter: alpha(opacity=0);
+            /*workaround to make clickable in IE */
+        }
+        div.coursesCont {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #eee;
+            color: #000;
+            padding: 20px;    
+        }
+
+        div.coursesCont:hover {
+            cursor: hand;
+            cursor: pointer;
+            opacity: .5;
+        }
+        </style>
+        
+        
     </head>
     <body>
         
@@ -70,15 +118,23 @@
         
     <!-- _____Navbar ____-->
         
-        <div class="container">
+        <div class="containerCont">
         
         Courses: <br>
 
         <%
 
         for(Courses course: CourseList){
-            out.print("<a href = \"CourseLandingServlet" + "\">" + course.getCourseName());
-            out.print(" By: " + course.getInstructor() + "<br>");
+            %>
+            
+            <div class="coursesCont" id = "<%=course.getCourseID()%>">
+                       
+            <%
+            out.print("<center>" +course.getCourseName() + "</center>");
+            out.print("<center> By: " + course.getInstructor() + "</center>");
+            %>
+            </div>
+            <%
         }
 
         %>
@@ -94,7 +150,15 @@
     <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        
+        $( ".coursesCont" ).click(function() {
+            var id = $(this).id;
+            $.post("CourseLandingServlet",
+              {
+                ids:id,
+              },
+              function(data,status){
+              });
+        }
             
 
         

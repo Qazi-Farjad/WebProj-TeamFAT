@@ -7,19 +7,20 @@
 package webProj.CourseIT.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import webProj.CourseIT.Beans.Courses;
-import webProj.CourseIT.Funct.DB_Courses;
+import webProj.CourseIT.Beans.Useraccinfo;
+import webProj.CourseIT.Funct.DB_UserAcademicinfo;
 
 /**
  *
  * @author Farjad
  */
-public class CourseLandingServlet extends HttpServlet {
+public class EditProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,23 +35,27 @@ public class CourseLandingServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int cid = (int)request.getAttribute("ids");
-        DB_Courses course = new DB_Courses();
-        Courses c = course.getCourse(cid);
+        //int cid = (int)request.getAttribute("courseid");
+        DB_UserAcademicinfo uai = new DB_UserAcademicinfo();
+        String uni = request.getParameter("University");
+        String school = request.getParameter("School");
+        String degree = request.getParameter("Degree");
         
+
         
         try{
             HttpSession session = request.getSession();
-            
-            session.setAttribute("ViewCourse", c);
-            
-            String encodedURL = response.encodeRedirectURL("CourseLanding.jsp");
+            Useraccinfo uai2 = (Useraccinfo)session.getAttribute("user");
+            int uid = uai2.getUserId();
+            uai.AddAcadInfo(uid, uni, school, degree);
+            String encodedURL = response.encodeRedirectURL("ProfileLanding.jsp");
             response.sendRedirect(encodedURL);
             
         }catch(Exception e){
-                
+            PrintWriter out = response.getWriter();
+            out.print("Error: " + e.getMessage());
+
         }
-        
         
         
     }

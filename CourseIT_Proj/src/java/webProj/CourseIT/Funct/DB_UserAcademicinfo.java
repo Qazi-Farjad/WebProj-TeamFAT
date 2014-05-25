@@ -46,7 +46,7 @@ public class DB_UserAcademicinfo {
     public static void main(String []args){
        DB_UserAcademicinfo d =  new DB_UserAcademicinfo();
        
-       d.AddAcadInfo(4, "talalwtf", "b2wtfcomxx", "c1wtfxx");
+       d.AddAcadInfo(7, "NUST", "SEECSx", "cCSxx");
     }
     
     
