@@ -110,9 +110,61 @@
     </header>
         
     <!-- _____Navbar ____-->
-        
-        <div class="containerCont">
-        
+        <h1 style="text-align:center;">Courses</h1>
+        <!-- Search courses by title and generate cards + starting ma kuch card ho.-->
+        <div class="container">
+            <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search Courses!">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" >Go!</button>
+      </span>
+        </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        </br></br>
+        <div class="container">
+             <div class="row">
+         <div class="col-xs-6">
+          <div class="thumbnail" id="target_5" style="cursor: pointer;">
+               <!-- Get Course Image.-->      
+              <img data-src="holder.js/300x200" alt="No image">
+              <div class="caption">
+           <h3>Get Course Title</h3>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
+            <!-- get Company University Name-->      
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+            
+         
+         </div>
+            </div>
+             
+         </div>
+            
+           <div class="col-xs-6">
+          <div class="thumbnail"id="target_4" style="cursor: pointer;">
+               <!-- Get Course Image.-->      
+              <img data-src="holder.js/300x200" alt="No image">
+              <div class="caption">
+           <h3>Get Course Title</h3>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
+            <!-- get Company University Name-->      
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+          
+         </div>
+            </div>
+             
+         </div>
+        </div>
+            </div>
         Courses: <br>
 
         <%
