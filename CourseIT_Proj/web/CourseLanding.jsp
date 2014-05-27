@@ -99,11 +99,9 @@
             
            
               	<hr class="col-md-12">
-              	Course Details, Offering time, And All that BS comes here. Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut.
-              	
+                <%=c.getCourseDesc() %><br>
+                <%=c.getSourceCompany() %><br>
+                <%=c.getSourceLink()%>
               
               
               	<h2 id="sec1">Instructor info:</h2>

@@ -26,9 +26,7 @@ public class DB_CourseEnroll {
     public static void main(String []args){
        DB_CourseEnroll d =  new DB_CourseEnroll();
        List<Courses> course = d.getEnrollmentbyUser(7);
-       for(Courses c: course)
-        System.out.println(c.getCourseName());
-      
+
     }
     
     public void setEnrollment(int userid, int courseid){

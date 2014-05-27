@@ -7,10 +7,8 @@
 package webProj.CourseIT.Beans;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,16 +16,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Farjad
+ * @author Talal Saleem
  */
 @Entity
 @Table(name = "courses")
@@ -42,7 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Courses.findBySourceCompany", query = "SELECT c FROM Courses c WHERE c.sourceCompany = :sourceCompany"),
     @NamedQuery(name = "Courses.findBySourceLink", query = "SELECT c FROM Courses c WHERE c.sourceLink = :sourceLink"),
     @NamedQuery(name = "Courses.findByExpiryDate", query = "SELECT c FROM Courses c WHERE c.expiryDate = :expiryDate"),
-    @NamedQuery(name = "Courses.findByStartingDate", query = "SELECT c FROM Courses c WHERE c.startingDate = :startingDate")})
+    @NamedQuery(name = "Courses.findByStartingDate", query = "SELECT c FROM Courses c WHERE c.startingDate = :startingDate"),
+    @NamedQuery(name = "Courses.findByCourseDesc", query = "SELECT c FROM Courses c WHERE c.courseDesc = :courseDesc"),
+    @NamedQuery(name = "Courses.findByCourseCtg", query = "SELECT c FROM Courses c WHERE c.courseCtg = :courseCtg")})
 public class Courses implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,12 +69,10 @@ public class Courses implements Serializable {
     @Column(name = "StartingDate")
     @Temporal(TemporalType.DATE)
     private Date startingDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseID")
-    private Collection<Courseenroll> courseenrollCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseID")
-    private Collection<Review> reviewCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseID")
-    private Collection<Coursehistory> coursehistoryCollection;
+    @Column(name = "course_desc")
+    private String courseDesc;
+    @Column(name = "course_ctg")
+    private String courseCtg;
 
     public Courses() {
     }
@@ -85,7 +81,7 @@ public class Courses implements Serializable {
         this.courseID = courseID;
     }
 
-    public Courses(String courseName, String instructor, int courseUV) {
+      public Courses(String courseName, String instructor, int courseUV) {
         this.courseName = courseName;
         this.instructor = instructor;
         this.courseUV = 0;
@@ -175,31 +171,20 @@ public class Courses implements Serializable {
         this.startingDate = startingDate;
     }
 
-    @XmlTransient
-    public Collection<Courseenroll> getCourseenrollCollection() {
-        return courseenrollCollection;
+    public String getCourseDesc() {
+        return courseDesc;
     }
 
-    public void setCourseenrollCollection(Collection<Courseenroll> courseenrollCollection) {
-        this.courseenrollCollection = courseenrollCollection;
+    public void setCourseDesc(String courseDesc) {
+        this.courseDesc = courseDesc;
     }
 
-    @XmlTransient
-    public Collection<Review> getReviewCollection() {
-        return reviewCollection;
+    public String getCourseCtg() {
+        return courseCtg;
     }
 
-    public void setReviewCollection(Collection<Review> reviewCollection) {
-        this.reviewCollection = reviewCollection;
-    }
-
-    @XmlTransient
-    public Collection<Coursehistory> getCoursehistoryCollection() {
-        return coursehistoryCollection;
-    }
-
-    public void setCoursehistoryCollection(Collection<Coursehistory> coursehistoryCollection) {
-        this.coursehistoryCollection = coursehistoryCollection;
+    public void setCourseCtg(String courseCtg) {
+        this.courseCtg = courseCtg;
     }
 
     @Override
