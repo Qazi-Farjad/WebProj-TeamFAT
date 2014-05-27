@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses"%>
@@ -155,34 +156,39 @@
         <h3 style="color:#E80C3F;">{GET student name}'s Courses</h3>
             <div class="row">
          <div class="col-xs-6">
-          <div class="thumbnail">
+          <div class="thumbnail" id="target_5" style="cursor: pointer;">
                <!-- Get Course Image.-->      
               <img data-src="holder.js/300x200" alt="No image">
               <div class="caption">
            <h3>Get Course Title</h3>
-           <p>Over Here get Course Infodsfadsdfdsfds</p>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
             <!-- get Company University Name-->      
-           <b>get Company Name</b>
-           <a href="">get Company linkcdssssssssssa<a>
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
             
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+         
          </div>
             </div>
              
          </div>
             
            <div class="col-xs-6">
-          <div class="thumbnail">
+          <div class="thumbnail"id="target_4" style="cursor: pointer;">
                <!-- Get Course Image.-->      
               <img data-src="holder.js/300x200" alt="No image">
               <div class="caption">
            <h3>Get Course Title</h3>
-           <p>Over Here get Course Infodsfadsdfdsfds</p>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
             <!-- get Company University Name-->      
-           <b>get Company Name</b>
-           <a href="">get Company linkcdssssssssssa<a>
-            
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+          
          </div>
             </div>
              
@@ -192,34 +198,40 @@
             
               <div class="row">
          <div class="col-xs-6">
-          <div class="thumbnail">
+          <div class="thumbnail" id="target_3" style="cursor: pointer;">
                <!-- Get Course Image.-->      
               <img data-src="holder.js/300x200" alt="No image">
               <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Over Here get Course Infodsfadsdfdsfds</p>
+         <h3>Get Course Title</h3>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
             <!-- get Company University Name-->      
-           <b>get Company Name</b>
-           <a href="">get Company linkcdssssssssssa<a>
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
             
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        
          </div>
             </div>
              
          </div>
             
            <div class="col-xs-6">
-          <div class="thumbnail">
+          <div class="thumbnail" id="target_2" style="cursor: pointer;">
                <!-- Get Course Image.-->      
               <img data-src="holder.js/300x200" alt="No image">
               <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Over Here get Course Infodsfadsdfdsfds</p>
+          <h3>Get Course Title</h3>
+           <p>Intructor : Get intructor</p>
+           <p>Description : Courses Desc</p>
             <!-- get Company University Name-->      
-           <b>get Company Name</b>
-           <a href="">get Company linkcdssssssssssa<a>
+           <p>University/Institute : get uni Name</p>
+           <p>Starting Date</p>
+           <a href="">get Company link</a></br>
+            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
             
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+       
          </div>
             </div>
              
@@ -234,7 +246,7 @@
             <h3 style="color:#E80C3F;">RECOMMENDED</h3>
            <div class="row">
          <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
-          <div class="thumbnail" >
+          <div class="thumbnail" id="target_1" style="cursor: pointer;" >
             
               <div class="caption">
            <h3>Get Internship Title</h3>
@@ -244,15 +256,15 @@
            <a href="">get email</a>
              <p><b>get Ending Date</b></p>
              </p><b>Get starting Date as Last day to submit</b></p>
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          
          </div>
             </div>
              
          </div>
           </div>
-                 <div class="row">
+                 <div class="row" >
          <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
-          <div class="thumbnail" >
+             <div id="target" class="thumbnail" style="cursor: pointer;" >
             
               <div class="caption">
            <h3>Get Internship Title</h3>
@@ -262,7 +274,7 @@
            <a href="">get email</a>
              <p><b>get Ending Date</b></p>
              </p><b>Get starting Date as Last day to submit</b></p>
-           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+         
          </div>
             </div>
              
@@ -292,7 +304,38 @@
     
     <!-- ______________________________ -->
             
+
+    
     <script type='text/javascript' src="Dependencies\jquery-2.1.1.js"></script>
-    <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script> 
-    </body>
+
+
+        <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script>
+        <script type='text/javascript'>
+        
+        $(document).ready(function() {
+        $( "#target" ).click(function() {
+         alert( "id=target" );
+        });
+        
+         $( "#target_1" ).click(function() {
+         alert( "id=target_1" );
+        });
+         $( "#target_2" ).click(function() {
+         alert( "id=target_2" );
+        });
+         $( "#target_3" ).click(function() {
+         alert( "id=target_3" );
+        });
+         $( "#target_4" ).click(function() {
+         alert( "id=target_4" );
+        });
+        
+         $( "#target_5" ).click(function() {
+         alert( "id=target_5" );
+        });
+        
+        });
+        
+        </script>
+        </body>
 </html>
