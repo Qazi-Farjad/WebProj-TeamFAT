@@ -84,29 +84,31 @@
               	
 				<div class="well"> 
               	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#sec1">Section 1</a></li>
-                  <li><a href="#sec2">Section 2</a></li>
-                  <li><a href="#sec3">Section 3</a></li>
-                  <li><a href="#sec4">Section 4</a></li>
+                  <li><a href="#sec1">Get Simlar Courses Link</a></li>
+                  <li><a href="#sec2">Get Simlar Courses Link</a></li>
+                  <li><a href="#sec3">Get Simlar Courses Link</a></li>
+                  <li><a href="#sec4">Get Simlar Courses Link</a></li>
               	</ul>
   				</div>
 
       		</div>  
+                <!-- Clicking the Star increasing the UV by one. -->
       		<div class="col-md-9">
-              	<h2 id="sec0"><%=c.getCourseName() %></h2>
-                <%=c.getInstructor() %><br/>
-              	
+              	<h2 id="sec0"><%=c.getCourseName() %>  <img src="star.png" style="width:40px;height:40px;text-align: right;"> <%=c.getCourseUV() %></img></h2>
+                <h4><%=c.getInstructor() %></h4>
+              	<h5>Starting Date : <%=c.getStartingDate() %></h5>
             
            
               	<hr class="col-md-12">
-                <%=c.getCourseDesc() %><br>
-                <%=c.getSourceCompany() %><br>
-                <%=c.getSourceLink()%>
+                 <p>University : <%=c.getSourceCompany() %></p>
+                <p>Description : <%=c.getCourseDesc() %></p>
+                
+                <p>Link :<a href="<%=c.getSourceLink()%>"><%=c.getSourceLink()%></a></p>
+              <p>Course Category : <%=c.getCourseCtg() %></p></br>
               
-              
-              	<h2 id="sec1">Instructor info:</h2>
+              	<h2 id="sec1">Reviews</h2>
               	
-                <h5 id="in1">Instructor: <%=c.getInstructor() %></h5>
+               
 
 
               	<div class="row">
@@ -114,9 +116,10 @@
                     <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #1</h3></div>
                       <div class="panel-body">
-                          <%=reviews.get(iter).getReviews()%>
-                          <br>
-                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                            <p><%=reviews.get(iter).getReviews()%><p>
+                          
+                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
                           <% iter++; %>
                       </div>
                     </div>
@@ -125,9 +128,10 @@
                       <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #2</h3></div>
                       <div class="panel-body">
-                          <%=reviews.get(iter).getReviews()%>
-                          <br>
-                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                           <p><%=reviews.get(iter).getReviews()%><p>
+                          
+                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
                           <% iter++; %>
                       </div>
                     </div>
@@ -139,9 +143,10 @@
                     <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #3</h3></div>
                       <div class="panel-body">
-                          <%=reviews.get(iter).getReviews()%>
-                          <br>
-                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <p><%=reviews.get(iter).getReviews()%><p>
+                          
+                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
                           <% iter++; %>
                       </div>
                     </div>
@@ -150,9 +155,10 @@
                       <div class="panel panel-default">
                       <div class="panel-heading"><h3>Review #4</h3></div>
                       <div class="panel-body">
-                          <%=reviews.get(iter).getReviews()%>
-                          <br>
-                          BY: <%=reviews.get(iter).getUserId().getName()%>
+                          <p><%=reviews.get(iter).getReviews()%><p>
+                          
+                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
                           <% iter++; %>
                       </div>
                     </div>
