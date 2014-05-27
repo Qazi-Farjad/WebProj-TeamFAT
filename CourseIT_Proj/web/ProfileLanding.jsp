@@ -58,7 +58,7 @@
               <a href="EditProfile.jsp">Edit Profile</a>
             </li>
             <li>
-              <a href="#">Groups</a>
+              <a href="Internship.jsp">Internship</a>
             </li>
                         
             <li>
