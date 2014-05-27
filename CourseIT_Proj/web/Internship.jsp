@@ -8,6 +8,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            .modal-dialog {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Courses</title>
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo, java.util.List"%>
@@ -146,6 +158,7 @@
          </div>
             
            <div class="col-xs-6">
+               <div data-toggle="modal" data-target="#GSCCModal">
           <div class="thumbnail" id="target_1" style="cursor: pointer;" >
             
               <div class="caption">
@@ -159,7 +172,26 @@
           
          </div>
             </div>
-             
+               </div>
+               <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+        <h4 class="modal-title" id="myModalLabel">Form </h4>
+      </div>
+      <div class="modal-body">
+       
+      <iframe src="https://docs.google.com/a/seecs.edu.pk/forms/d/11wII_WoCygdhL8BdImfRgdCB9C3K9qdrmKZPTPNvGoM/viewform" width="90%" height="90%">
+		<p>Your browser does not support iframes.</p>
+		</iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
          </div>
         </div>
             </div>
