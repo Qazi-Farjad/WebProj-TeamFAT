@@ -111,13 +111,13 @@
         
     <!-- _____Navbar ____-->
         <h1 style="text-align:center;">Courses</h1>
-        <!-- Search courses by title and generate cards + starting ma kuch card ho.-->
+        <!-- Search courses by title and generate cards + starting ma kuch card ho for the user to choose.-->
         <div class="container">
             <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search Courses!">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" >Go!</button>
+        <button class="btn btn-primary" type="button" >Go!</button>
       </span>
         </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
