@@ -28,7 +28,7 @@
         %>
         <title>Profile: <%= name %></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">
         <link href="Dependencies\signin.css" rel="stylesheet">
     </head>
     <body>
@@ -255,7 +255,7 @@
           
            <a href="">get email</a>
              <p><b>get Ending Date</b></p>
-             </p><b>Get starting Date as Last day to submit</b></p>
+             <p><b>Get starting Date as Last day to submit</b></p>
           
          </div>
             </div>
@@ -273,7 +273,7 @@
           
            <a href="">get email</a>
              <p><b>get Ending Date</b></p>
-             </p><b>Get starting Date as Last day to submit</b></p>
+             <p><b>Get starting Date as Last day to submit</b></p>
          
          </div>
             </div>
@@ -283,21 +283,6 @@
         </div>
       </div>
         </div>
-    <br><br>
-    Your Courses: <br>
-    
-
-    <%
-        //DB_CourseEnroll ce = new DB_CourseEnroll();
-        //List<Courses> courses = ce.getEnrollmentbyUser(userID);
-        
-        //for(Courses c: courses)
-        //    out.print(c.getCourseName() + "<br>");
-        
-        
-    %>
-
-    Notifications:
     
         
     

@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="Dependencies\bootstrap\css\bootstrap.min.css" rel="stylesheet">
+        <link href="Dependencies\bootstrap\css\bootstrap.css" rel="stylesheet">
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo, java.util.List"%>
         <%@ page import="webProj.CourseIT.Beans.Courses,webProj.CourseIT.Funct.DB_Courses"%>
         <%@ page import="webProj.CourseIT.Beans.Review,webProj.CourseIT.Funct.DB_Review"%>
@@ -38,6 +38,7 @@
     <body>
     
         <!-- _____Navbar ____-->
+        
     <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -61,7 +62,7 @@
               <a href="EditProfile.jsp">Edit Profile</a>
             </li>
             <li>
-              <a href="#">Groups</a>
+              <a href="Internship.jsp">Internship</a>
             </li>
                         
             <li>

@@ -27,7 +27,7 @@
         %>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">
         <link href="Dependencies\signin.css" rel="stylesheet">
         
         <style>
@@ -75,6 +75,7 @@
         
         
         <!-- _____Navbar ____-->
+        
     <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
@@ -98,9 +99,9 @@
               <a href="EditProfile.jsp">Edit Profile</a>
             </li>
             <li>
-              <a href="#">Groups</a>
+              <a href="Internship.jsp">Internship</a>
             </li>
-            
+                        
             <li>
               <a href="ProfileLanding.jsp"><%= name%></a>
             </li>
