@@ -95,7 +95,7 @@
       		</div>  
                 <!-- Clicking the Star increasing the UV by one. -->
       		<div class="col-md-9">
-              	<h2 id="sec0"><%=c.getCourseName() %>  <img src="star.png" style="width:40px;height:40px;text-align: right;"> <%=c.getCourseUV() %></img></h2>
+              	<h2 id="sec0"><%=c.getCourseName() %>  <img src="Images\star.png" style="width:40px;height:40px;text-align: right;"> <%=c.getCourseUV() %></img></h2>
                 <h4><%=c.getInstructor() %></h4>
               	<h5>Starting Date : <%=c.getStartingDate() %></h5>
             

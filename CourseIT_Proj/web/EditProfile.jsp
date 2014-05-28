@@ -13,7 +13,7 @@
         <%
         String user = null;
         if(session.getAttribute("user") == null){
-            response.sendRedirect("login.html");
+            response.sendRedirect("index.html");
         }
             
         Useraccinfo uai = (Useraccinfo)session.getAttribute("user");
