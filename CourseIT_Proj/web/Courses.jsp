@@ -51,7 +51,7 @@
         
         <!-- _____Navbar ____-->
         
-    <header class="navbar navbar-inverse navbar-static-top" role="banner">
+    <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">

@@ -60,7 +60,7 @@
         
         <!-- _____Navbar ____-->
         
-    <header class="navbar navbar-inverse navbar-static-top" role="banner">
+    <header class="navbar navbar-default navbar-static-top" role="banner">
       <div class="container">
         <div class="navbar-header">
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -164,29 +164,6 @@
   </div>
 </div>
          </div>
-        
-        
-        <hr class="featurette-divider">
-	<div class="container marketing">
-	 <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-		
-        <p>&copy; 2014 #TeamFAT, Inc. &middot; 
-		<a href="#">
-		<img src="facebook.png" href="#" style="width:30px;height:30px;">
-		</a> &middot; 
-		<a href="#">
-		<img src="linkedin.png" href="#" style="width:30px;height:30px;">
-		</a> &middot; 
-		<a href="#">
-		<img src="twitter.png" href="#" style="width:30px;height:30px;">
-		</a> &middot; 
-		<a href="#">
-		<img src="pinterest.png" href="#" style="width:30px;height:30px;">
-		</a> &middot; 
-		</p>
-      </footer>
-	  </div>
     <!-- ______________________________ -->
     
 
