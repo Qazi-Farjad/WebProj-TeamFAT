@@ -30,6 +30,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">
         <link href="Dependencies\signin.css" rel="stylesheet">
+        
+        <style>
+        .containerCont{
+          float:left;
+          position:relative;
+        }
+        .coursesCont{
+          float:left;
+          height: 50%; /* or whatever you want */
+          position:relative;
+          width: 80%; /* or whatever you want */
+          margin-left: 10%;
+        }
+        </style>
+        
     </head>
     <body>
         
@@ -70,7 +85,7 @@
     </header>
         <!-- _____Navbar ____-->        
     
-    <h1> Welcome to CourseIT <%= name%> </h1>
+    <center><h1> Welcome, <%= name%> </h1></center>
      <hr class="featurette-divider">
     <div class="container">
     <div class="row">
@@ -151,92 +166,44 @@
                     </div>
                 </div>
         
-        <!-- Student's Courses -->
-        <div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">hi
-        <h3 style="color:#E80C3F;">{GET student name}'s Courses</h3>
-            <div class="row">
-         <div class="col-xs-6">
+        <!-- __________________________ User's Courses __________________________________-->
+        <%
+            DB_CourseEnroll ce = new DB_CourseEnroll();
+            List<Courses> curse = ce.getEnrollmentbyUser(userID);
+        %>
+        
+        <div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+        <h3 style="color:#E80C3F;">Your Courses</h3>
+        <div class="coursesCont">
+        <%
+            for(Courses course: curse){
+                
+            
+            %>
+                
           <div class="thumbnail" id="target_5" style="cursor: pointer;">
                <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
+              <img src="Images\def-ava.png" height = "250px" width = "175px" alt="No image">
               <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+                   <h3><%=course.getCourseName()%></h3>
+                   <p>Intructor : <%=course.getInstructor()%></p>
+                   <p>Description :<%=course.getCourseDesc()%></p>
+                    <!-- get Company University Name-->      
+                   <p>Offered by : <%=course.getSourceCompany()%></p>
+                   <p>Starting Date: <%=course.getStartingDate()%></p>
+                   <a href="">get Company link</a></br>
+                   <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=course.getCourseUV()%></b></p>
             
          
-         </div>
-            </div>
-             
-         </div>
-            
-           <div class="col-xs-6">
-          <div class="thumbnail"id="target_4" style="cursor: pointer;">
-               <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
-              <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+              </div>
+          </div>
+            <%
+            }
+            %>
           
-         </div>
-            </div>
-             
-         </div>
-        </div>
-            
-            
-              <div class="row">
-         <div class="col-xs-6">
-          <div class="thumbnail" id="target_3" style="cursor: pointer;">
-               <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
-              <div class="caption">
-         <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
-            
+        </div>    
         
-         </div>
-            </div>
-             
-         </div>
-            
-           <div class="col-xs-6">
-          <div class="thumbnail" id="target_2" style="cursor: pointer;">
-               <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
-              <div class="caption">
-          <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
-            
-       
-         </div>
-            </div>
-             
-         </div>
-        </div>
+
             
             
         </div>
@@ -244,7 +211,7 @@
         <!-- Recommended courses and internship -->
         <div class="col-md-3">
             <h3 style="color:#E80C3F;">RECOMMENDED</h3>
-           <div class="row">
+        <div class="row">
          <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
           <div class="thumbnail" id="target_1" style="cursor: pointer;" >
             

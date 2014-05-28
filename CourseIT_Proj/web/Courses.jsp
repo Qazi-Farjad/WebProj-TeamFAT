@@ -37,10 +37,9 @@
         }
         .coursesCont{
           float:left;
-          height: 250px; /* or whatever you want */
+          height: 50%; /* or whatever you want */
           position:relative;
-          width: 550px; /* or whatever you want */
-          border:10px solid red;
+          width: 50%; /* or whatever you want */
         }
           
         a.divLink{
@@ -111,6 +110,8 @@
     </header>
         
     <!-- _____Navbar ____-->
+    
+    
         <h1 style="text-align:center;">Courses</h1>
         <!-- Search courses by title and generate cards + starting ma kuch card ho for the user to choose.-->
         <div class="container">
@@ -166,14 +167,14 @@
          </div>
         </div>
             </div>
-        Courses: <br>
+        
 
         <%
 
         for(Courses course: CourseList){
             %>
             
-            <div class="coursesCont" id = "<%=course.getCourseID()%>">
+        <div class="coursesCont" id = "<%=course.getCourseID()%>">
                        
             <%
             out.print("<center>" +course.getCourseName() + "</center>");
