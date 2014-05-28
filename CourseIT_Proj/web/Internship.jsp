@@ -24,6 +24,7 @@
         <title>Courses</title>
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo, java.util.List"%>
         <%@ page import="webProj.CourseIT.Beans.Courses,webProj.CourseIT.Funct.DB_Courses"%>
+        <%@ page import="webProj.CourseIT.Funct.DB_Internships, webProj.CourseIT.Beans.Internships"%>    
         <%
         String user = null;
         if(session.getAttribute("user") == null){
@@ -39,45 +40,16 @@
         %>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">
+        <link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">   
         <link href="Dependencies\signin.css" rel="stylesheet">
         
         <style>
-        .containerCont{
-          float:left;
-          position:relative;
-        }
+
         .coursesCont{
           float:left;
           height: 250px; /* or whatever you want */
           position:relative;
-          width: 550px; /* or whatever you want */
-          border:10px solid red;
-        }
-          
-        a.divLink{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            text-decoration: none;
-            /* Makes sure the link doesn't get underlined */
-            z-index: 10;
-            /* raises anchor tag above everything else in div */
-            background-color: white;
-            /*workaround to make clickable in IE */
-            opacity: 0;
-            /*workaround to make clickable in IE */
-            filter: alpha(opacity=0);
-            /*workaround to make clickable in IE */
-        }
-        div.coursesCont {
-            position: relative;
-
-            background: #eee;
-            color: #000;
-            padding: 20px;    
+          width: 50%; /* or whatever you want */
         }
         </style>
         
@@ -108,20 +80,20 @@
               <a href="#">Explore</a>
             </li>
             <li>
-              <a href="EditProfile.jsp">Edit Profile</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
-                        
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="ProfileLanding.jsp"><%= name%></a>
             </li>
-          </ul>
+            <li>
+              <a href="EditProfile.jsp">Edit Profile</a>
+            </li>
+            </ul>
         </nav>
       </div>
     </header>
-        
     <!-- _____Navbar ____-->
     
         <h1 style="text-align:center;">Internships</h1>
@@ -138,43 +110,40 @@
         </div><!-- /.row -->
         </br></br>
         <div class="container">
-             <div class="row">
-         <div class="col-xs-6">
-      
-         <div class="thumbnail" id="target_1" style="cursor: pointer;" >
+            <%
+            DB_Internships ints = new DB_Internships();
+            List<Internships> internships = ints.getInternshipsByField("CS");
+            %>
             
-              <div class="caption">
-           <h3>Get Internship Title</h3>
-           <p>Over Here get Internship Info</p>
-            <!-- get Company University Name-->      
-          
-           <a href="">get email</a>
-             <p><b>get Ending Date</b></p>
-             <p><b>Get starting Date as Last day to submit</b></p>
-          
-         </div>
-            </div>
-             
-         
-             
-         </div>
-            
-           <div class="col-xs-6">
-               <div data-toggle="modal" data-target="#GSCCModal">
+        <div class="coursesCont">
+            <%
+                for(Internships i: internships){
+                    
+                
+            %>
+        <div data-toggle="modal" data-target="#GSCCModal">                
+         <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
           <div class="thumbnail" id="target_1" style="cursor: pointer;" >
             
-              <div class="caption">
-           <h3>Get Internship Title</h3>
-           <p>Over Here get Internship Info</p>
+         <div class="caption">
+           <h3>Internship by: <%=i.getSubmitter()%></h3>
+           <p><%=i.getInfo()%></p>
             <!-- get Company University Name-->      
           
-           <a href="">get email</a>
-             <p><b>get Ending Date</b></p>
-             <p><b>Get starting Date as Last day to submit</b></p>
+           <a href="mailto:<%=i.getEmail()%>">Send Email</a>
+             <p><b><%=i.getDuration()%></b></p>
+             <p><b>Last day to submit: <%=i.getStartingDate()%></b></p>
           
          </div>
-            </div>
-               </div>
+          </div>
+             
+         </div>
+         <%
+                }
+                    %>
+        </div>
+        </div>
+               
                <div id="GSCCModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
  <div class="modal-dialog">
     <div class="modal-content">
@@ -195,13 +164,6 @@
   </div>
 </div>
          </div>
-        </div>
-            </div>
-     
-        
-        
-        </div>
-            
     <!-- ______________________________ -->
     
 

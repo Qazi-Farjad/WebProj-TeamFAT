@@ -55,20 +55,20 @@
               <a href="#">Explore</a>
             </li>
             <li>
-              <a href="EditProfile.jsp">Edit Profile</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
-                        
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="ProfileLanding.jsp"><%= name%></a>
             </li>
-          </ul>
+            <li>
+              <a href="EditProfile.jsp">Edit Profile</a>
+            </li>
+            </ul>
         </nav>
       </div>
     </header>
-            
         <!-- _____Navbar ____-->
 
         <div class ="container">

@@ -39,32 +39,8 @@
           float:left;
           height: 50%; /* or whatever you want */
           position:relative;
-          width: 50%; /* or whatever you want */
-        }
-          
-        a.divLink{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            text-decoration: none;
-            /* Makes sure the link doesn't get underlined */
-            z-index: 10;
-            /* raises anchor tag above everything else in div */
-            background-color: white;
-            /*workaround to make clickable in IE */
-            opacity: 0;
-            /*workaround to make clickable in IE */
-            filter: alpha(opacity=0);
-            /*workaround to make clickable in IE */
-        }
-        div.coursesCont {
-            position: relative;
-
-            background: #eee;
-            color: #000;
-            padding: 20px;    
+          width: 80%; /* or whatever you want */
+          margin-left: 10%;
         }
         </style>
         
@@ -95,80 +71,55 @@
               <a href="#">Explore</a>
             </li>
             <li>
-              <a href="EditProfile.jsp">Edit Profile</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
-                        
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="ProfileLanding.jsp"><%= name%></a>
             </li>
-          </ul>
+            <li>
+              <a href="EditProfile.jsp">Edit Profile</a>
+            </li>
+            </ul>
         </nav>
       </div>
     </header>
-        
     <!-- _____Navbar ____-->
     
     
         <h1 style="text-align:center;">Courses</h1>
-        <!-- Search courses by title and generate cards + starting ma kuch card ho for the user to choose.-->
-        <div class="container">
-            <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search Courses!">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" >Go!</button>
-      </span>
-        </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-        </br></br>
-        <div class="container">
-             <div class="row">
-         <div class="col-xs-6">
+        
+        <div class="col-md-9 col-md-offset-3" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+        <h3 style="color:#E80C3F;">Your Courses</h3>
+        <div class="coursesCont">
+        <%
+            for(Courses course: CourseList){
+                
+            
+            %>
+                
           <div class="thumbnail" id="target_5" style="cursor: pointer;">
                <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
+              <img src="Images\def-ava.png" height = "250" width = "175" alt="No image">
               <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+                   <h3><%=course.getCourseName()%></h3>
+                   <p>Instructor : <%=course.getInstructor()%></p>
+                   <p>Description :<%=course.getCourseDesc()%></p>
+                    <!-- get Company University Name-->      
+                   <p>Offered by : <%=course.getSourceCompany()%></p>
+                   <p>Starting Date: <%=course.getStartingDate()%></p>
+                   <a href="<%=course.getSourceLink() %>">Go to Course >></a></br>
+                   <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=course.getCourseUV()%></b></p>
             
          
-         </div>
-            </div>
-             
-         </div>
-            
-           <div class="col-xs-6">
-          <div class="thumbnail"id="target_4" style="cursor: pointer;">
-               <!-- Get Course Image.-->      
-              <img data-src="holder.js/300x200" alt="No image">
-              <div class="caption">
-           <h3>Get Course Title</h3>
-           <p>Intructor : Get intructor</p>
-           <p>Description : Courses Desc</p>
-            <!-- get Company University Name-->      
-           <p>University/Institute : get uni Name</p>
-           <p>Starting Date</p>
-           <a href="">get Company link</a></br>
-            <p style="text-align: center;"><img src="star.png" style="width:20px;height:20px;"> <b>Get UV</b></img></p>
+              </div>
+          </div>
+            <%
+            }
+            %>
           
-         </div>
-            </div>
-             
-         </div>
         </div>
-            </div>
-        
-
         <%
 
         for(Courses course: CourseList){

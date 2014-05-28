@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses"%>
         <%@ page import="webProj.CourseIT.Funct.DB_CourseEnroll"%>
+        <%@ page import="webProj.CourseIT.Funct.DB_Internships, webProj.CourseIT.Beans.Internships"%>
         <%@ page import="java.util.List"%>        
         <%
         String user = null;
@@ -70,16 +71,17 @@
               <a href="#">Explore</a>
             </li>
             <li>
-              <a href="EditProfile.jsp">Edit Profile</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
-                        
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="ProfileLanding.jsp"><%= name%></a>
             </li>
-          </ul>
+            <li>
+              <a href="EditProfile.jsp">Edit Profile</a>
+            </li>
+            </ul>
         </nav>
       </div>
     </header>
@@ -183,15 +185,15 @@
                 
           <div class="thumbnail" id="target_5" style="cursor: pointer;">
                <!-- Get Course Image.-->      
-              <img src="Images\def-ava.png" height = "250px" width = "175px" alt="No image">
+              <img src="Images\def-ava.png" height = "250" width = "175" alt="No image">
               <div class="caption">
                    <h3><%=course.getCourseName()%></h3>
-                   <p>Intructor : <%=course.getInstructor()%></p>
+                   <p>Instructor : <%=course.getInstructor()%></p>
                    <p>Description :<%=course.getCourseDesc()%></p>
                     <!-- get Company University Name-->      
                    <p>Offered by : <%=course.getSourceCompany()%></p>
                    <p>Starting Date: <%=course.getStartingDate()%></p>
-                   <a href="">get Company link</a></br>
+                   <a href="<%=course.getSourceLink() %>">Go to Course >></a></br>
                    <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=course.getCourseUV()%></b></p>
             
          
@@ -208,45 +210,46 @@
             
         </div>
         
-        <!-- Recommended courses and internship -->
+        <!--_____________________ Recommended courses and internship______________________ -->
+        
+
+        
         <div class="col-md-3">
             <h3 style="color:#E80C3F;">RECOMMENDED</h3>
-        <div class="row">
+    
+            <%
+            DB_Internships ints = new DB_Internships();
+            List<Internships> internships = ints.getInternshipsByField("CS");
+            %>
+            
+        <div class="coursesCont">
+            <%
+                for(Internships i: internships){
+                    
+                
+            %>
+                
          <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
           <div class="thumbnail" id="target_1" style="cursor: pointer;" >
             
-              <div class="caption">
-           <h3>Get Internship Title</h3>
-           <p>Over Here get Internship Info</p>
+         <div class="caption">
+           <h3>Internship by: <%=i.getSubmitter()%></h3>
+           <p><%=i.getInfo()%></p>
             <!-- get Company University Name-->      
           
-           <a href="">get email</a>
-             <p><b>get Ending Date</b></p>
-             <p><b>Get starting Date as Last day to submit</b></p>
+           <a href="mailto:<%=i.getEmail()%>">Send Email</a>
+             <p><b><%=i.getDuration()%></b></p>
+             <p><b>Last day to submit: <%=i.getStartingDate()%></b></p>
           
          </div>
-            </div>
+          </div>
              
          </div>
-          </div>
-                 <div class="row" >
-         <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
-             <div id="target" class="thumbnail" style="cursor: pointer;" >
-            
-              <div class="caption">
-           <h3>Get Internship Title</h3>
-           <p>Over Here get Internship Info</p>
-            <!-- get Company University Name-->      
-          
-           <a href="">get email</a>
-             <p><b>get Ending Date</b></p>
-             <p><b>Get starting Date as Last day to submit</b></p>
-         
-         </div>
-            </div>
-             
-         </div>
-          </div>
+         <%
+                }
+                    %>
+        </div>
+        <!--__________Internships_____________ -->
         </div>
       </div>
         </div>
