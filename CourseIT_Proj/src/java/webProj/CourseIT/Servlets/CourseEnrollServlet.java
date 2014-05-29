@@ -51,7 +51,7 @@ public class CourseEnrollServlet extends HttpServlet {
         
         DB_Courses course = new DB_Courses();
         Courses c = course.getCourse(courseid);
-        course.incrementUV(courseid);
+        //course.incrementUV(courseid);
         
         try{
         HttpSession session = request.getSession();

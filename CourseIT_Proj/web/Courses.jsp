@@ -96,7 +96,14 @@
 
               <div class="thumbnail" id="target_5" style="cursor: pointer;">
                    <!-- Get Course Image.-->      
-                  <img src="<%=course.getCoursepic()%>" height = "250" width = "175" alt="No image">
+                  <img src="<% if(course.getCoursepic() != null){
+                       out.print(course.getCoursepic());
+                        }
+                       else{
+                           out.print("Images\\def-coursepic.jpg");
+                       }
+                       %>
+                          " height = "250" width = "175" alt="No image">
                   <div class="caption">
                       <center>
                        <h3><%=course.getCourseName()%></h3>
