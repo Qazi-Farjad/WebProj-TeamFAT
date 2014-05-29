@@ -112,8 +112,8 @@
 
                        <center>
                        <form action="CourseLandingServlet">
-                          <input type="hidden" name="id" value="<%=course.getCourseID()%>">
-                          <input type="submit" value="Go to Course">
+                          <input type="hidden"  name="id" value="<%=course.getCourseID()%>">
+                          <input type="submit" class ="btn btn-lg btn-primary" value="Go to Course">
                        </form>
                        </center>
                   </div>
@@ -137,15 +137,16 @@
             var id = $(this).id;
             $.post("CourseLandingServlet",
               {
-                ids:id,
+                ids:id
               },
               function(data,status){
               });
-        }
+        });
             
 
         
         });
+        
     </script>
         
     

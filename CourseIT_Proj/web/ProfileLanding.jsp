@@ -162,7 +162,7 @@
             
             %>
                 
-          <div class="thumbnail" id="target_5" style="cursor: pointer;">
+          <div class="thumbnail crse" id="<%=course.getCourseID()%>" style="cursor: pointer;">
                <!-- Get Course Image.-->      
               <img src="<%=course.getCoursepic()%>" height = "250" width = "175" alt="No image">
               <div class="caption">
@@ -209,7 +209,7 @@
             %>
                 
          <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
-          <div class="thumbnail" id="target_1" style="cursor: pointer;" >
+         <div class="thumbnail" id="target" style="cursor: pointer;" >
             
          <div class="caption">
            <h3>Internship by: <%=i.getSubmitter()%></h3>
@@ -251,28 +251,41 @@
         <script type='text/javascript'>
         
         $(document).ready(function() {
+            
+        $('.crse').click(ajaxCall);
+        
+        function ajaxCall(){
+         $.post("CourseLandingServlet",
+              {
+                ids:"1"
+
+              },
+              function(data,status){
+              });
+           
+              }
+
+            
+        $( ".crse" ).click(function() {
+            $.post("CourseLandingServlet",
+              {
+                ids:this.id
+              },
+              function(data,status){
+                  alert("Rerouting");
+              });
+              "html"
+            });
+        
         $( "#target" ).click(function() {
-         alert( "id=target" );
+         alert( "Send an Email to the given Link to apply for Internship" );
         });
         
-         $( "#target_1" ).click(function() {
-         alert( "id=target_1" );
-        });
-         $( "#target_2" ).click(function() {
-         alert( "id=target_2" );
-        });
-         $( "#target_3" ).click(function() {
-         alert( "id=target_3" );
-        });
-         $( "#target_4" ).click(function() {
-         alert( "id=target_4" );
-        });
         
-         $( "#target_5" ).click(function() {
-         alert( "id=target_5" );
-        });
         
         });
+        
+        
         
         </script>
         </body>

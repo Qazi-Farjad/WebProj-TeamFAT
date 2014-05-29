@@ -26,8 +26,9 @@
         DB_Courses db = new DB_Courses();
         
         int iter = 0;
-
+        
         Courses c = (Courses)session.getAttribute("ViewCourse");
+        //int cid = (Integer)session.getAttribute("CourseID");
         DB_Review rev = new DB_Review();
         List<Review> reviews = rev.getReviews(1);
         %>        
@@ -95,7 +96,7 @@
       		</div>  
                 <!-- Clicking the Star increasing the UV by one. -->
       		<div class="col-md-9">
-              	<h2 id="sec0"><%=c.getCourseName() %>  <img src="Images\star.png" style="width:40px;height:40px;text-align: right;"> <%=c.getCourseUV() %></img></h2>
+              	<h2 id="sec0"><%=c.getCourseName() %>  <img src="Images\star.png" style="width:40px;height:40px;text-align: right;"> <%=c.getCourseUV() %></h2>
                 <h4><%=c.getInstructor() %></h4>
               	<h5>Starting Date : <%=c.getStartingDate() %></h5>
             
@@ -105,13 +106,17 @@
                 <p>Description : <%=c.getCourseDesc() %></p>
                 
                 <p>Link :<a href="<%=c.getSourceLink()%>"><%=c.getSourceLink()%></a></p>
-              <p>Course Category : <%=c.getCourseCtg() %></p></br>
+              <p>Course Category : <%=c.getCourseCtg() %></p><br>
+              
+              <!--__________________________________________________-->
+               <form action="CourseEnrollServlet">
+                  <input type="hidden"  name="cid" value="1">
+                  <input type="hidden"  name="uid" value="<%=userID%>">                  
+                  <input type="submit" class ="btn btn-primary" value="Follow">
+               </form>
+              <!--__________________________________________________-->
               
               	<h2 id="sec1">Reviews</h2>
-              	
-               
-
-
               	<div class="row">
                   <div class="col-md-6">
                     <div class="panel panel-default">
@@ -120,7 +125,7 @@
                             <p><%=reviews.get(iter).getReviews()%><p>
                           
                           BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
-                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
+                                
                           <% iter++; %>
                       </div>
                     </div>
@@ -132,7 +137,7 @@
                            <p><%=reviews.get(iter).getReviews()%><p>
                           
                           BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
-                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
+                               
                           <% iter++; %>
                       </div>
                     </div>
@@ -147,7 +152,7 @@
                           <p><%=reviews.get(iter).getReviews()%><p>
                           
                           BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
-                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
+                               
                           <% iter++; %>
                       </div>
                     </div>
@@ -159,7 +164,7 @@
                           <p><%=reviews.get(iter).getReviews()%><p>
                           
                           BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
-                             From{University} : <b><%=reviews.get(iter).getUserId().getName()%></b>      
+                               
                           <% iter++; %>
                       </div>
                     </div>
@@ -181,8 +186,20 @@
         <script type='text/javascript'>
         
         $(document).ready(function() {
+
+        $('#FollowBtn').click(ajaxCall);
         
-            
+        
+        function ajaxCall(){
+         $.post("CourseEnrollServlet",
+              {
+                userid:"1",
+                courseid:"1"
+              },
+              function(data,status){
+              });
+           
+        }
 
         
         });

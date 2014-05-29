@@ -44,6 +44,21 @@ public class DB_Courses {
               session.close();
     }
     
+    public void incrementUV(int cid){
+              Session session=getSession();
+              session.beginTransaction();
+        
+              
+               Courses course = getCourse(cid);
+               int x = course.getCourseUV();
+               course.setCourseUV(++x);
+               session.saveOrUpdate(course);
+               
+              
+              session.getTransaction().commit();  
+              session.close();
+    }    
+    
     
     //Using cname as identifier for now. If you have an easily implementable way of using
     //course_id, do tell.

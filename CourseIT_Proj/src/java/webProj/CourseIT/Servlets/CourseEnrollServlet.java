@@ -8,18 +8,21 @@ package webProj.CourseIT.Servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import webProj.CourseIT.Beans.Courses;
+import webProj.CourseIT.Funct.DB_CourseEnroll;
 import webProj.CourseIT.Funct.DB_Courses;
 
 /**
  *
  * @author Farjad
  */
-public class CourseLandingServlet extends HttpServlet {
+@WebServlet(name = "CourseEnrollServlet", urlPatterns = {"/CourseEnrollServlet"})
+public class CourseEnrollServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +37,34 @@ public class CourseLandingServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String cid = request.getParameter("id");
-        int ccid = Integer.parseInt(cid);
-        DB_Courses course = new DB_Courses();
-        Courses c = course.getCourse(ccid);
+        String cid = request.getParameter("cid");
+        String uid = request.getParameter("uid");
         
+        int userid = Integer.parseInt(uid);
+        int courseid = Integer.parseInt(cid);
+        
+        
+        DB_CourseEnroll ce = new DB_CourseEnroll();
+
+        ce.setEnrollment(userid, courseid);
+        
+        
+        DB_Courses course = new DB_Courses();
+        Courses c = course.getCourse(courseid);
+        course.incrementUV(courseid);
         
         try{
-            HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
             
-            session.setAttribute("ViewCourse", c);
-            session.setAttribute("CourseID", c.getCourseID());
-            
-            String encodedURL = response.encodeRedirectURL("CourseLanding.jsp");
-            response.sendRedirect(encodedURL);
-            
+        session.setAttribute("ViewCourse", c);
+        
+        String encodedURL = response.encodeRedirectURL("CourseLanding.jsp");
+        response.sendRedirect(encodedURL);
+        
+        
         }catch(Exception e){
-                
+            
         }
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
