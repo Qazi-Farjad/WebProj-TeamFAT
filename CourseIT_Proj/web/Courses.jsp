@@ -31,10 +31,6 @@
         <link href="Dependencies\signin.css" rel="stylesheet">
         
         <style>
-        .containerCont{
-          float:left;
-          position:relative;
-        }
         .coursesCont{
           float:left;
           height: 50%; /* or whatever you want */
@@ -60,7 +56,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="/" class="navbar-brand">CourseIT</a>
+          <a href="index.html" class="navbar-brand">CourseIT</a>
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
@@ -88,62 +84,45 @@
     <!-- _____Navbar ____-->
     
     
-        <h1 style="text-align:center;">Courses</h1>
+        <h1 style="text-align:center; color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Courses</h1>
         
-        <div class="col-md-9 col-md-offset-3" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
-        <h3 style="color:#E80C3F;">Your Courses</h3>
-        <div class="coursesCont">
-        <%
-            for(Courses course: CourseList){
-                
-            
-            %>
-                
-          <div class="thumbnail" id="target_5" style="cursor: pointer;">
-               <!-- Get Course Image.-->      
-              <img src="Images\def-ava.png" height = "250" width = "175" alt="No image">
-              <div class="caption">
-                   <h3><%=course.getCourseName()%></h3>
-                   <p>Instructor : <%=course.getInstructor()%></p>
-                   <p>Description :<%=course.getCourseDesc()%></p>
-                    <!-- get Company University Name-->      
-                   <p>Offered by : <%=course.getSourceCompany()%></p>
-                   <p>Starting Date: <%=course.getStartingDate()%></p>
-                   <a href="<%=course.getSourceLink() %>">Go to Course >></a></br>
-                   <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=course.getCourseUV()%></b></p>
-            
-         
-              </div>
-          </div>
+        <div class="col-md-8 col-md-offset-2" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+            <div class="coursesCont">
             <%
-            }
-            %>
-          
-        </div>
-        <%
+                for(Courses course: CourseList){
 
-        for(Courses course: CourseList){
-            %>
-            
-        <div class="coursesCont" id = "<%=course.getCourseID()%>">
+
+                %>
+
+              <div class="thumbnail" id="target_5" style="cursor: pointer;">
+                   <!-- Get Course Image.-->      
+                  <img src="<%=course.getCoursepic()%>" height = "250" width = "175" alt="No image">
+                  <div class="caption">
+                      <center>
+                       <h3><%=course.getCourseName()%></h3>
+                       <p>Instructor : <%=course.getInstructor()%></p>
+                      </center>
                        
-            <%
-            out.print("<center>" +course.getCourseName() + "</center>");
-            out.print("<center> By: " + course.getInstructor() + "</center><br><br>");
-            %>
-            
-            <form action="CourseLandingServlet">
-              <input type="hidden" name="id" value="<%=course.getCourseID()%>">
-              <input type="submit" value="Go to Course">
-            </form>
-            
-            </div>
-            <%
-        }
+                       <p>Description :<%=course.getCourseDesc()%></p>
+                        <!-- get Company University Name-->      
+                       <p>Offered by : <%=course.getSourceCompany()%></p>
+                       <p>Starting Date: <%=course.getStartingDate()%></p>
+                       <a href="<%=course.getSourceLink() %>">Go to Course >></a></br>
+                       <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=course.getCourseUV()%></b></p>
 
-        %>
-        
-        
+                       <center>
+                       <form action="CourseLandingServlet">
+                          <input type="hidden" name="id" value="<%=course.getCourseID()%>">
+                          <input type="submit" value="Go to Course">
+                       </form>
+                       </center>
+                  </div>
+              </div>
+                <%
+                }
+                %>
+
+            </div>       
         </div>
             
     <!-- ______________________________ -->

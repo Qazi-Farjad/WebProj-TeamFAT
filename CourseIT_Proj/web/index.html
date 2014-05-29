@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="Dependencies\bootstrap.css" media="screen">
+	<link rel="stylesheet" href="Dependencies\bootstrap\css\bootstrap.css" media="screen">
 	
 	
 	
@@ -22,7 +22,7 @@
   
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -101,21 +101,22 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="Images\nust_1.jpg" style="height:500px;width:100%;" alt="First slide">
+          <img src="Images\courseraSplashScr.png" style="height:500px;width:100%;" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>National University of Science and Technology</h1>
-              <p>One of the most densely populated cities in the world, Lahore remains an economic, political, transportation, entertainment, and educational hub. It is referred to as the "Mughal City of Gardens" due to the historic presence of gardens in and around the city dating back to the Mughal period.</p>
+              <h1 style = "color: #000;text-shadow: 1px 1px #2953CF;">Discuss courses offered by many different MOOC's</h1>
+              <p style = "color: #000;text-shadow: 1px 1px #2953CF;">One of the most popular innovations of our time is the massive revolution in offering courses online. Coursera, Udacity, edX, and Khan Academy are the poster children of this revolution
+              You can discuss courses offered by any of these sites here at CourseIT, making friends and study groups, and learning like its meant to be done: Together</p>
 			  
             </div>
           </div>
         </div>
         <div class="item">
-          <img src="Images\lums.jpg" style="height:500px;width:100%;"  alt="Second slide">
+          <img src="Images\univs.jpg" style="height:500px;width:80%;margin-left:10%;"  alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Lahore University of Management and Sciences</h1>
-              <p>Forever Supportor</p>
+              <h1 style = "color: #000;text-shadow: 1px 1px #2953CF;">Associated Universities</h1>
+              <p style = "color: #000;text-shadow: 1px 1px #2953CF;">These are some of the Universities whose courses you will find at the popular MOOC's, and most probably find reviews and discussion boards about them right here at CourseIT</p>
              
             </div>
           </div>
@@ -124,8 +125,8 @@
           <img src="Images\Harvard.jpg" style="height:500px;width:100%;"  alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Harvard Business School</h1>
-              <p>Forever Supportor</p>
+              <h1>Harvard University</h1>
+              <p>Harvard University if world-renowned for keeping their courses and course content open to the world, while also accompanying them with in-lecture videos and Examination Samples</p>
             </div>
           </div>
         </div>
@@ -145,127 +146,81 @@
 		  <br>
 		    
       <div class="row">
-	  
-	   <div class="col-md-3">
-      <form class="form-signin" role="form" action="LoginServlet">
-        <h3 class="form-signin-heading">Sign In</h3>
+    <div class="col-md-4" style="padding-right:20px;">
+      <form class="form-signin" role="form" action="LoginServlet" id = "SignIn">
+          <center><h3 class="form-signin-heading">Sign In</h3></center>
         <input type="email" name = "email" class="form-control" placeholder="Email address" required autofocus></br>
         <input type="password" name = "password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <center><a id = "SignUpLink">Or SignUp</a></center>
       </form>
-        </div>
-	  
-       
-		
-    <div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
-         <h2>New Registration</h2>
-	   
-      <div class="row">
-  </div>
+
+
  
-  <form role="form">
+  <form role="form" action="SignUpServlet" id = "SignUp">
     <div class="form-group">
-      <label for="firstname" class="col-md-6">
+        <center><h2>Sign Up</h2></center>
+      <label for="firstname" class="col-md-3">
          Name:
       </label>
-      <div class="col-md-6">
-        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name">
+      <div class="col-md-9">
+        <input type="text" class="form-control" name="name" placeholder="Enter Name">
+            <br>
       </div>
+  
     </div>
- 
-	</br>
     <div class="form-group">
-      <label for="emailaddress" class="col-md-6">
+      <label for="emailaddress" class="col-md-3">
         Email address:
       </label>
-      <div class="col-md-6">
-        <input type="email" class="form-control" id="emailaddress" placeholder="Enter email address">
+      <div class="col-md-9">
+        <input type="email" class="form-control" name="email" placeholder="Enter email address">
         <p class="help-block" style="color:white">
           Example: yourname@domain.com
         </p>
       </div>
- 
- 
     </div>
  
     <div class="form-group">
-      <label for="password" class="col-md-6">
+      <label for="password" class="col-md-3">
         Password:
       </label>
-      <div class="col-md-6">
-        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+      <div class="col-md-9">
+        <input type="password" class="form-control" name="password" placeholder="Enter Password">
         <p class="help-block" style="color:white">
           Min: 6 characters (Alphanumeric only)
         </p>
       </div>
     </div>
-	</br>
-	<div class="form-group">
-      <label for="University" class="col-md-6">
-         University:
-      </label>
-      <div class="col-md-6">
-        <input type="text" class="form-control" id="University" placeholder="University name">
-      </div>
-    </div>
-	</br>
-	<div class="form-group">
-      <label for="School" class="col-md-6">
-         School:
-      </label>
-      <div class="col-md-6">
-        <input type="text" class="form-control" id="School" placeholder="School name">
-      </div>
-    </div>
-	</br>
-	<div class="form-group">
-      <label for="Degree" class="col-md-6">
-         Degree enrolled:
-      </label>
-      <div class="col-md-6">
-        <input type="text" class="form-control" id="degree" placeholder=" Degree enrolled">
-      </div>
-    </div>
- 
- </br>
-    <div class="form-group">
-      <label for="uploadimage" class="col-md-6">
-        Upload Image:
-      </label>
-      <div class="col-md-6">
-        <input type="file" name="uploadimage" id="uploadimage">
-        <p class="help-block" style="color:white">
-          Allowed formats: jpeg, jpg, png
-        </p>
-      </div>
-    </div>
  
     <div class="checkbox">
-      <div class="col-md-6">
+      <div class="col-md-3">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <label>
           <input type="checkbox">Terms and Conditions</label>
       </div>
+        <br>
     </div>
  
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-3">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <button type="submit" class="btn btn-info">
           Register
         </button>
       </div>
     </div>
+      <center><a id="SignInLink">Or SignIn</a></center>
   </form>
   </div>
   
   
-        <div class="col-md-3">
+        <div class="col-md-3 col-md-offset-5">
 		</br>
           <h3> Foreign Opportunities</h3>
 		   
@@ -345,6 +300,24 @@
         
         
     <script type='text/javascript' src="Dependencies\jquery-2.1.1.js"></script>
-    <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script>    
+    <script type='text/javascript' src="Dependencies\bootstrap\js\bootstrap.min.js"></script>
+    <script type='text/javascript'>
+        
+        $(document).ready(function() {
+            $( "#SignUp" ).hide();
+        $( "#SignUpLink" ).click(function() {
+            $( "#SignIn" ).hide(1000);
+            $( "#SignUp" ).show(1000);
+        });
+        
+        $( "#SignInLink" ).click(function() {
+            $( "#SignUp" ).hide(1000);
+            $( "#SignIn" ).show(1000);
+        });
+        
+        
+        });
+        
+        </script>
   </body>
 </html>

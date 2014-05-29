@@ -13,6 +13,7 @@
         <%@ page import="webProj.CourseIT.Beans.Useraccinfo,webProj.CourseIT.Beans.Courses"%>
         <%@ page import="webProj.CourseIT.Funct.DB_CourseEnroll"%>
         <%@ page import="webProj.CourseIT.Funct.DB_Internships, webProj.CourseIT.Beans.Internships"%>
+        <%@ page import="webProj.CourseIT.Beans.Useracademicinfo"%>
         <%@ page import="java.util.List"%>        
         <%
         String user = null;
@@ -33,9 +34,11 @@
         <link href="Dependencies\signin.css" rel="stylesheet">
         
         <style>
-        .containerCont{
+        .coursesContInt{
           float:left;
+          height: 40%; /* or whatever you want */
           position:relative;
+          width: 100%; /* or whatever you want */
         }
         .coursesCont{
           float:left;
@@ -87,86 +90,62 @@
     </header>
         <!-- _____Navbar ____-->        
     
-    <center><h1> Welcome, <%= name%> </h1></center>
+    <center><h2 style = "color:#7D7D7D; text-shadow: 1px 1px #2953CF;"> Welcome, <%= name%> </h2></center>
      <hr class="featurette-divider">
     <div class="container">
     <div class="row">
         
         <!-- Edit Profile -->
+        
+        <%
+            Useracademicinfo acad = uai.getUseracademicinfo();
+        %>
+        
         <div class="col-md-3" >
-            <h3 style="color:#E80C3F;">Edit Profile</h3>
-             <p>Get University Name : <a href="#" class="btn btn-default" data-toggle="modal" data-target="#basicModal">Edit</a></p>
-             <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">Edit University Name</h4>
+            <h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Profile Tag</h3>
+            
+            <div class="thumbnail" style="cursor: pointer;">
+               <!-- Get Profile Pic Image.-->      
+              <img src="
+                      <% if(uai.getUserPic() != null){
+                       out.print(uai.getUserPic());
+                        }
+                       else{
+                           out.print("Images\\def-ava.png");
+                       }
+                       %>" height = "250" width = "175" alt="No image">
+              <div class="caption">
+                  <center>
+                   <h3><%=uai.getName()%></h3>
+                   <p>University : 
+                       <% if(acad != null){
+                       out.print(acad.getUni());
+                        }
+                       else{
+                           out.print("N/A");
+                       }
+                       %>
+                   </p>
+                   <p>School : 
+                   <% if(acad != null){
+                       out.print(acad.getSchool());
+                        }
+                       else{
+                           out.print("N/A");
+                       }
+                       %></p>
+                   <p>Degree : 
+                   <% if(acad != null){
+                       out.print(acad.getDegree());
+                        }
+                       else{
+                           out.print("N/A");
+                       }
+                       %></p>     
+                  </center>                     
+              </div>
             </div>
-            <div class="modal-body">
-                <h3><input class="form-control" type = "text" name="university" placeholder="Enter University Name"></h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                
-                
-                
-             </div>
-         </div>
         </div>
-        </div>
-              <hr class="featurette-divider">
-              <p>Get school Name   : <a href="#" class="btn btn-default" data-toggle="modal" data-target="#basicModal_1">Edit </a></p>
-             <div class="modal fade" id="basicModal_1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">Edit school Name</h4>
-            </div>
-            <div class="modal-body">
-                <h3> <input class="form-control" type = "text" name="school" placeholder="Enter School Name"></h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                
-                
-                
-             </div>
-         </div>
-        </div>
-        </div>
-               <hr class="featurette-divider">
-               <p>Get degree       : <a href="#" class="btn btn-default" data-toggle="modal" data-target="#basicModal_2">Edit</a></p>
-             <div class="modal fade" id="basicModal_2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-            <h4 class="modal-title" id="myModalLabel">Edit degree</h4>
-            </div>
-            <div class="modal-body">
-                <h3><input class="form-control" type = "text" name="degree" placeholder="Choose your degree"></h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                
-                
-                
-             </div>
-         </div>
-        </div>
-        </div>
-                <hr class="featurette-divider">
-                <div>
-                  <label for="profiePic">File input (Image)</label>
-                    <input type="file" id="profiePic">
-                    <p class="help-block">Upload a Profile Pic</p>
-                    </div>
-                </div>
         
         <!-- __________________________ User's Courses __________________________________-->
         <%
@@ -175,7 +154,7 @@
         %>
         
         <div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
-        <h3 style="color:#E80C3F;">Your Courses</h3>
+            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Courses</h3></center>
         <div class="coursesCont">
         <%
             for(Courses course: curse){
@@ -185,7 +164,7 @@
                 
           <div class="thumbnail" id="target_5" style="cursor: pointer;">
                <!-- Get Course Image.-->      
-              <img src="Images\def-ava.png" height = "250" width = "175" alt="No image">
+              <img src="<%=course.getCoursepic()%>" height = "250" width = "175" alt="No image">
               <div class="caption">
                    <h3><%=course.getCourseName()%></h3>
                    <p>Instructor : <%=course.getInstructor()%></p>
@@ -215,14 +194,14 @@
 
         
         <div class="col-md-3">
-            <h3 style="color:#E80C3F;">RECOMMENDED</h3>
+            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">RECOMMENDED</h3></center>
     
             <%
             DB_Internships ints = new DB_Internships();
             List<Internships> internships = ints.getInternshipsByField("CS");
             %>
             
-        <div class="coursesCont">
+        <div class="coursesContInt">
             <%
                 for(Internships i: internships){
                     
@@ -234,11 +213,13 @@
             
          <div class="caption">
            <h3>Internship by: <%=i.getSubmitter()%></h3>
+           <hr class="featurette-divider">
            <p><%=i.getInfo()%></p>
             <!-- get Company University Name-->      
           
            <a href="mailto:<%=i.getEmail()%>">Send Email</a>
              <p><b><%=i.getDuration()%></b></p>
+             <hr class="featurette-divider">
              <p><b>Last day to submit: <%=i.getStartingDate()%></b></p>
           
          </div>
@@ -260,6 +241,8 @@
     <!-- ______________________________ -->
             
 
+    
+    
     
     <script type='text/javascript' src="Dependencies\jquery-2.1.1.js"></script>
 
