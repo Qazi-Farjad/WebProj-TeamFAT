@@ -35,35 +35,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Instructors<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Course Rankings</a></li>
-                <li><a href="#">Teacher Profiles</a></li>
-                <li><a href="#">Professional Development</a></li>
-				 <li><a href="#">Employment Opportunities</a></li>
-              </ul>
-            </li>
-			
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Internships<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Foreign Linkages</a></li>
-                <li><a href="#">Internship Opportunities</a></li>
-              </ul>
-            </li>
-			
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Schedule Planner<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Calendar</a></li>
-                <li><a href="#">Class Timings</a></li>
-		<li><a href="#">Make a payment</a></li>
-              </ul>
-            </li>
-			
+            <li class="active"><a href="#">Home</a></li>		
 
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -132,10 +104,10 @@
 		    
       <div class="row">
     <div class="col-md-4" style="padding-right:20px;">
-      <form class="form-signin" role="form" action="LoginServlet" id = "SignIn">
+      <form class="form-signin" role="form" action="LoginServlet" id = "SignIn" onsubmit="return validateForm()">
           <center><h3 class="form-signin-heading">Sign In</h3></center>
         <input type="email" name = "email" class="form-control" placeholder="Email address" required autofocus></br>
-        <input type="password" name = "password" class="form-control" placeholder="Password" required>
+        <input type="password" name = "password" class="form-control" placeholder="Password" required pattern=".{6,}" title="6 characters minimum">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
@@ -145,7 +117,7 @@
 
 
  
-  <form role="form" action="SignUpServlet" id = "SignUp">
+  <form role="form" action="SignUpServlet" id = "SignUp" onsubmit="return validateForm()">
     <div class="form-group">
         <center><h2>Sign Up</h2></center>
       <label for="firstname" class="col-md-3">
@@ -162,7 +134,7 @@
         Email address:
       </label>
       <div class="col-md-9">
-        <input type="email" class="form-control" name="email" placeholder="Enter email address">
+        <input type="email" class="form-control" name="email" placeholder="Enter email address" required>
         <p class="help-block" style="color:white">
           Example: yourname@domain.com
         </p>
@@ -174,9 +146,9 @@
         Password:
       </label>
       <div class="col-md-9">
-        <input type="password" class="form-control" name="password" placeholder="Enter Password">
+        <input type="password" class="form-control" name="password" placeholder="Enter Password" required pattern=".{6,}" title="6 characters minimum">
         <p class="help-block" style="color:white">
-          Min: 6 characters (Alphanumeric only)
+          Min: 6 characters
         </p>
       </div>
     </div>
@@ -195,7 +167,7 @@
       <div class="col-md-3">
       </div>
       <div class="col-md-9">
-        <button type="submit" class="btn btn-info">
+        <button type="submit" class="btn btn-info" id = "Register">
           Register
         </button>
       </div>
@@ -301,7 +273,24 @@
         });
         
         
+        
         });
+        
+        function validateForm() {
+        var name = document.getElementById("email");
+        if (name.value === "") {
+           alert("Please enter UserName");
+           name.focus();
+           return false;             
+        }
+        var password = document.getElementById("password");
+        if (password.value === "") {
+           alert("Please enter Password");
+           password.focus();
+           return false;
+        }
+        return true;
+    }
         
         </script>
   </body>

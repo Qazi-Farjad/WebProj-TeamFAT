@@ -33,6 +33,16 @@ public class DB_CourseEnroll {
          Session session=getSession();
         session.beginTransaction();
         
+      Query q = session.getNamedQuery("Courseenroll.findByfollow");
+      q.setParameter("userid",userid);
+      q.setParameter("courseID", courseid);
+      List<Courseenroll> res = q.list();
+      if(!res.isEmpty()){
+          session.getTransaction().commit();  
+            session.close();
+      }
+      
+      else{
         Courseenroll c = new Courseenroll();
         Query query = session.getNamedQuery("Useraccinfo.findByUserId");
         query.setParameter("userId", userid);
@@ -58,7 +68,7 @@ public class DB_CourseEnroll {
         session.getTransaction().commit();  
         session.close();
         
-        
+      }
         
         
         

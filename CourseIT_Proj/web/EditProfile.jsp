@@ -52,9 +52,6 @@
               <a href="Courses.jsp">Courses</a>
             </li>
             <li>
-              <a href="#">Explore</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
           </ul>
@@ -88,13 +85,18 @@
                     <label for="degree">Degree</label>
                     <input class="form-control" type = "text" name="degree" placeholder="Choose your degree">
                   </div>
-                
-                    <label for="profiePic">File input (Image)</label>
-                    <input type="file" id="profiePic">
-                    <p class="help-block">Upload a Profile Pic</p>
+               
                   
                   <button type="submit" class="btn btn-default">Submit</button>
                 </form>
+                
+                <form action="FileUploadServlet" method="post" enctype="multipart/form-data">
+                    <label for="profiePic">File input (Image)</label>
+                    <input type="file" id="profiePic">
+                    <p class="help-block">Upload a Profile Pic</p>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                
             </div>
         </div>    
         </div>    

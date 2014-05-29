@@ -30,7 +30,7 @@
         Courses c = (Courses)session.getAttribute("ViewCourse");
         //int cid = (Integer)session.getAttribute("CourseID");
         DB_Review rev = new DB_Review();
-        List<Review> reviews = rev.getReviews(1);
+        List<Review> reviews = rev.getReviews(6);
         %>        
         
         
@@ -55,9 +55,6 @@
           <ul class="nav navbar-nav">
             <li>
               <a href="Courses.jsp">Courses</a>
-            </li>
-            <li>
-              <a href="#">Explore</a>
             </li>
             <li>
               <a href="Internship.jsp">Internship</a>
@@ -85,12 +82,26 @@
   			<div class="col-md-3" id="leftCol">
               	
 				<div class="well"> 
-              	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#sec1">Get Simlar Courses Link</a></li>
-                  <li><a href="#sec2">Get Simlar Courses Link</a></li>
-                  <li><a href="#sec3">Get Simlar Courses Link</a></li>
-                  <li><a href="#sec4">Get Simlar Courses Link</a></li>
-              	</ul>
+<div class="thumbnail" style="cursor: pointer;" id="sidebar">
+                   <!-- Get Course Image.-->      
+                  <img src="<% if(c.getCoursepic() != null){
+                       out.print(c.getCoursepic());
+                        }
+                       else{
+                           out.print("Images\\def-coursepic.jpg");
+                       }
+                       %>
+                          " height = "250" width = "250" alt="No image">
+                  <div class="caption">
+                        <!-- get Company University Name-->      
+                       <p>Offered by : <%=c.getSourceCompany()%></p>
+                       <p>Starting Date: <%=c.getStartingDate()%></p>
+                       <a href="<%=c.getSourceLink() %>">Go to Course >></a></br>
+                       <p style="text-align: center;"><img src="Images\star.png" style="width:20px;height:20px;"> <b><%=c.getCourseUV()%></b></p>
+
+                  </div>
+              </div>
+              	
   				</div>
 
       		</div>  
@@ -102,24 +113,23 @@
             
            
               	<hr class="col-md-12">
-                 <p>University : <%=c.getSourceCompany() %></p>
-                <p>Description : <%=c.getCourseDesc() %></p>
+                <p>Description : <%=c.getCourseDesc()%></p>
                 
                 <p>Link :<a href="<%=c.getSourceLink()%>"><%=c.getSourceLink()%></a></p>
-              <p>Course Category : <%=c.getCourseCtg() %></p><br>
+                <p>Course Category : <%=c.getCourseCtg()%></p><br>
               
               <!--__________________________________________________-->
                <form action="CourseEnrollServlet">
-                  <input type="hidden"  name="cid" value="1">
+                  <input type="hidden"  name="cid" value="6">
                   <input type="hidden"  name="uid" value="<%=userID%>">                  
-                  <input type="submit" class ="btn btn-primary" value="Follow">
+                  <input type="submit" class ="btn btn-primary" value="Follow" id = "followBtn">
                </form>
               <!--__________________________________________________-->
               
               	<h2 id="sec1">Reviews</h2>
               	<div class="row">
                   <div class="col-md-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                       <div class="panel-heading"><h3>Review #1</h3></div>
                       <div class="panel-body">
                             <p><%=reviews.get(iter).getReviews()%><p>
@@ -131,12 +141,12 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                      <div class="panel panel-default">
+                      <div class="panel panel-primary">
                       <div class="panel-heading"><h3>Review #2</h3></div>
                       <div class="panel-body">
                            <p><%=reviews.get(iter).getReviews()%><p>
                           
-                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                          BY: <b>Amar Rasul</b></br>
                                
                           <% iter++; %>
                       </div>
@@ -146,19 +156,19 @@
                 
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                       <div class="panel-heading"><h3>Review #3</h3></div>
                       <div class="panel-body">
                           <p><%=reviews.get(iter).getReviews()%><p>
                           
-                          BY: <b><%=reviews.get(iter).getUserId().getName()%></b></br>
+                          BY: <b>AhmedBQ</b></br>
                                
                           <% iter++; %>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6">
-                      <div class="panel panel-default">
+                      <div class="panel panel-primary">
                       <div class="panel-heading"><h3>Review #4</h3></div>
                       <div class="panel-body">
                           <p><%=reviews.get(iter).getReviews()%><p>
@@ -186,6 +196,11 @@
         <script type='text/javascript'>
         
         $(document).ready(function() {
+            
+            
+            $('#followBtn').click(function(){
+                alert("Course now followed");
+            });
 
         $('#FollowBtn').click(ajaxCall);
         

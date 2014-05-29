@@ -63,15 +63,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="/" class="navbar-brand">CourseIT</a>
+          <a href="index.html" class="navbar-brand">CourseIT</a>
         </div>
         <nav class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
             <li>
               <a href="Courses.jsp">Courses</a>
-            </li>
-            <li>
-              <a href="#">Explore</a>
             </li>
             <li>
               <a href="Internship.jsp">Internship</a>
@@ -157,9 +154,7 @@
             <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Courses</h3></center>
         <div class="coursesCont">
         <%
-            for(Courses course: curse){
-                
-            
+            for(Courses course: curse){           
             %>
                 
           <div class="thumbnail crse" id="<%=course.getCourseID()%>" style="cursor: pointer;">
@@ -264,19 +259,7 @@
               });
            
               }
-
-            
-        $( ".crse" ).click(function() {
-            $.post("CourseLandingServlet",
-              {
-                ids:this.id
-              },
-              function(data,status){
-                  alert("Rerouting");
-              });
-              "html"
-            });
-        
+              
         $( "#target" ).click(function() {
          alert( "Send an Email to the given Link to apply for Internship" );
         });

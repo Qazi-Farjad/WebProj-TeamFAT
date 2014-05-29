@@ -64,9 +64,6 @@
               <a href="Courses.jsp">Courses</a>
             </li>
             <li>
-              <a href="#">Explore</a>
-            </li>
-            <li>
               <a href="Internship.jsp">Internship</a>
             </li>
           </ul>
