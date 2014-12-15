@@ -1,4 +1,4 @@
-WebProj-TeamFAT
+WebProj
 ===============
 
-Web ka project lalalala gugugugugu
+Web Project, Semester 4.
